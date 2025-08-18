@@ -75,18 +75,14 @@ const Index = () => {
       setCurrentResult(finalResult);
       setHistory(prev => [finalResult, ...prev.slice(0, 4)]); // Keep last 5 including current
       
-      // Persist to Supabase with API key hash for security audit
-      const apiKeyHash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(apiKey))
-        .then(hashBuffer => Array.from(new Uint8Array(hashBuffer))
-          .map(b => b.toString(16).padStart(2, '0')).join(''));
-
+      // Persist to Supabase with actual API key (WARNING: Security risk!)
       const { error: insertError } = await supabase.from('api_checks').insert({
         provider_name: selectedProvider.name,
         model_name: selectedModel,
         status: finalResult.status,
         latency: finalResult.latency,
         error_message: finalResult.errorMessage,
-        api_key_hash: apiKeyHash
+        api_key_value: apiKey
       });
 
       if (insertError) {

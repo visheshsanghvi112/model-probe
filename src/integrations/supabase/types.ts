@@ -16,7 +16,7 @@ export type Database = {
     Tables: {
       api_checks: {
         Row: {
-          api_key_hash: string | null
+          api_key_value: string | null
           created_at: string
           error_message: string | null
           id: string
@@ -28,7 +28,7 @@ export type Database = {
           user_id: string | null
         }
         Insert: {
-          api_key_hash?: string | null
+          api_key_value?: string | null
           created_at?: string
           error_message?: string | null
           id?: string
@@ -40,7 +40,7 @@ export type Database = {
           user_id?: string | null
         }
         Update: {
-          api_key_hash?: string | null
+          api_key_value?: string | null
           created_at?: string
           error_message?: string | null
           id?: string
