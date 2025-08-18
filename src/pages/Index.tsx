@@ -8,6 +8,8 @@ import { StatusCard } from "@/components/StatusCard";
 import { HistoryList } from "@/components/HistoryList";
 import { Provider, CheckResult } from "@/types/apiTypes";
 import { ApiChecker } from "@/services/apiChecker";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { Activity, Zap } from "lucide-react";
 
 const Index = () => {
@@ -97,22 +99,19 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-surface-muted">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 rounded-lg bg-gradient-primary shadow-glow">
-              <Activity className="h-8 w-8 text-primary-foreground" />
-            </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-info bg-clip-text text-transparent">
-              Universal LLM API Health Checker
-            </h1>
-          </div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Test your API keys and check the health of various LLM providers in real-time. 
-            Get instant feedback on connectivity, latency, and status.
+      <Header />
+      
+      <main className="container mx-auto px-4 py-12 max-w-4xl">
+        {/* Hero Section */}
+        <section className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-foreground mb-4">
+            Professional API Health Monitoring
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Test your API keys and monitor the health of various LLM providers in real-time. 
+            Get instant feedback on connectivity, latency, and status for enterprise-grade reliability.
           </p>
-        </div>
+        </section>
 
         {/* Main Form */}
         <div className="bg-gradient-surface rounded-xl border border-card-border shadow-lg p-8 mb-8">
@@ -163,7 +162,9 @@ const Index = () => {
 
         {/* History */}
         <HistoryList history={history} />
-      </div>
+      </main>
+      
+      <Footer />
     </div>
   );
 };
