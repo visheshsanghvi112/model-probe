@@ -12,7 +12,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Activity, Zap } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { createHash } from 'crypto';
 
 const Index = () => {
   const [selectedProvider, setSelectedProvider] = useState<Provider | null>(null);
@@ -77,10 +76,11 @@ const Index = () => {
       setHistory(prev => [finalResult, ...prev.slice(0, 4)]); // Keep last 5 including current
       
       // Persist to Supabase with API key hash for security audit
-      const hashBuffer = Buffer.from(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(apiKey)));
-      const apiKeyHash = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+      const apiKeyHash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(apiKey))
+        .then(hashBuffer => Array.from(new Uint8Array(hashBuffer))
+          .map(b => b.toString(16).padStart(2, '0')).join(''));
 
-      await supabase.from('api_checks').insert({
+      const { error: insertError } = await supabase.from('api_checks').insert({
         provider_name: selectedProvider.name,
         model_name: selectedModel,
         status: finalResult.status,
@@ -88,6 +88,12 @@ const Index = () => {
         error_message: finalResult.errorMessage,
         api_key_hash: apiKeyHash
       });
+
+      if (insertError) {
+        console.error('Failed to save API check to database:', insertError);
+      } else {
+        console.log('API check saved successfully to database');
+      }
       
       if (finalResult.status === 'healthy') {
         toast({
