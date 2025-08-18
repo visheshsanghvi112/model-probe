@@ -14,7 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      api_checks: {
+        Row: {
+          api_key_hash: string | null
+          created_at: string
+          error_message: string | null
+          id: string
+          latency: number | null
+          model_name: string
+          provider_name: string
+          status: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          api_key_hash?: string | null
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          latency?: number | null
+          model_name: string
+          provider_name: string
+          status: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          api_key_hash?: string | null
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          latency?: number | null
+          model_name?: string
+          provider_name?: string
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
