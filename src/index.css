@@ -6,59 +6,59 @@
 
 @layer base {
   :root {
-    /* Base colors */
-    --background: 248 250 252;
-    --foreground: 226 235 249;
-    --surface: 255 255 255;
-    --surface-muted: 248 250 252;
+    /* Base colors - Clean HSL values */
+    --background: 240 10% 98%;
+    --foreground: 240 10% 9%;
+    --surface: 0 0% 100%;
+    --surface-muted: 240 4.8% 95.9%;
 
     /* Developer-focused palette */
-    --primary: 239 68% 68%;
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
-    --primary-muted: 239 84% 94%;
+    --primary-muted: 262 83% 95%;
 
-    /* Status colors */
+    /* Status colors - Proper HSL */
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
-    --success-muted: 142 76% 94%;
+    --success-muted: 142 76% 95%;
     
     --error: 0 84% 60%;
     --error-foreground: 0 0% 100%;
-    --error-muted: 0 84% 94%;
+    --error-muted: 0 84% 95%;
     
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
-    --warning-muted: 38 92% 94%;
+    --warning-muted: 38 92% 95%;
     
-    --info: 214 100% 59%;
+    --info: 217 91% 60%;
     --info-foreground: 0 0% 100%;
-    --info-muted: 214 100% 94%;
+    --info-muted: 217 91% 95%;
 
     /* UI elements */
     --card: 0 0% 100%;
-    --card-foreground: 226 235 249;
-    --card-border: 214 32% 91%;
+    --card-foreground: 240 10% 9%;
+    --card-border: 240 5.9% 90%;
 
     --input: 0 0% 100%;
-    --input-border: 214 32% 91%;
-    --input-foreground: 226 235 249;
+    --input-border: 240 5.9% 90%;
+    --input-foreground: 240 10% 9%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    --border: 214 32% 91%;
-    --ring: 239 68% 68%;
+    --border: 240 5.9% 90%;
+    --ring: 262 83% 58%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(239 68% 68%), hsl(214 100% 59%));
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(217 91% 60%));
     --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 46%));
-    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%), hsl(248 250 252));
+    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%), hsl(240 4.8% 95.9%));
 
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --shadow-glow: 0 0 20px hsl(239 68% 68% / 0.3);
+    --shadow-glow: 0 0 20px hsl(262 83% 58% / 0.3);
 
     --radius: 0.75rem;
 
