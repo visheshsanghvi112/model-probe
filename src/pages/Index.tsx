@@ -1,11 +1,168 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { ProviderSelect } from "@/components/ProviderSelect";
+import { ModelSelect } from "@/components/ModelSelect";
+import { ApiKeyInput } from "@/components/ApiKeyInput";
+import { StatusCard } from "@/components/StatusCard";
+import { HistoryList } from "@/components/HistoryList";
+import { Provider, CheckResult } from "@/types/apiTypes";
+import { ApiChecker } from "@/services/apiChecker";
+import { Activity, Zap } from "lucide-react";
 
 const Index = () => {
+  const [selectedProvider, setSelectedProvider] = useState<Provider | null>(null);
+  const [selectedModel, setSelectedModel] = useState<string>("");
+  const [apiKey, setApiKey] = useState<string>("");
+  const [currentResult, setCurrentResult] = useState<CheckResult | null>(null);
+  const [history, setHistory] = useState<CheckResult[]>([]);
+  const [isChecking, setIsChecking] = useState(false);
+  const { toast } = useToast();
+
+  const handleCheck = async () => {
+    if (!selectedProvider) {
+      toast({
+        title: "Provider required",
+        description: "Please select a provider first.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!selectedModel) {
+      toast({
+        title: "Model required", 
+        description: "Please select a model first.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!apiKey.trim()) {
+      toast({
+        title: "API key required",
+        description: "Please enter your API key.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsChecking(true);
+    
+    // Create checking result
+    const checkingResult: CheckResult = {
+      id: Date.now().toString(),
+      provider: selectedProvider,
+      model: selectedModel,
+      status: 'checking',
+      timestamp: new Date()
+    };
+    
+    setCurrentResult(checkingResult);
+
+    try {
+      const result = await ApiChecker.checkApi(selectedProvider, selectedModel, apiKey);
+      
+      const finalResult: CheckResult = {
+        ...result,
+        id: checkingResult.id,
+        timestamp: checkingResult.timestamp
+      };
+      
+      setCurrentResult(finalResult);
+      setHistory(prev => [finalResult, ...prev.slice(0, 4)]); // Keep last 5 including current
+      
+      if (finalResult.status === 'healthy') {
+        toast({
+          title: "API is healthy! ✅",
+          description: `${selectedProvider.name} ${selectedModel} responded in ${finalResult.latency}ms`
+        });
+      }
+    } catch (error) {
+      console.error('Check failed:', error);
+      toast({
+        title: "Check failed",
+        description: "An unexpected error occurred.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsChecking(false);
+    }
+  };
+
+  const handleProviderChange = (provider: Provider) => {
+    setSelectedProvider(provider);
+    setSelectedModel(""); // Reset model when provider changes
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gradient-to-br from-background to-surface-muted">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="p-3 rounded-lg bg-gradient-primary shadow-glow">
+              <Activity className="h-8 w-8 text-primary-foreground" />
+            </div>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-info bg-clip-text text-transparent">
+              Universal LLM API Health Checker
+            </h1>
+          </div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Test your API keys and check the health of various LLM providers in real-time. 
+            Get instant feedback on connectivity, latency, and status.
+          </p>
+        </div>
+
+        {/* Main Form */}
+        <div className="bg-gradient-surface rounded-xl border border-card-border shadow-lg p-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <ProviderSelect
+              selectedProvider={selectedProvider}
+              onProviderChange={handleProviderChange}
+            />
+            <ModelSelect
+              provider={selectedProvider}
+              selectedModel={selectedModel}
+              onModelChange={setSelectedModel}
+            />
+          </div>
+          
+          <div className="mb-6">
+            <ApiKeyInput
+              apiKey={apiKey}
+              onApiKeyChange={setApiKey}
+            />
+          </div>
+
+          <Button
+            onClick={handleCheck}
+            disabled={isChecking || !selectedProvider || !selectedModel || !apiKey.trim()}
+            className="w-full h-12 text-lg font-semibold bg-gradient-primary hover:shadow-glow transition-all duration-300"
+          >
+            {isChecking ? (
+              <div className="flex items-center gap-2">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-foreground"></div>
+                Checking API...
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Zap className="h-5 w-5" />
+                Check API Health
+              </div>
+            )}
+          </Button>
+        </div>
+
+        {/* Current Result */}
+        {currentResult && (
+          <div className="mb-8">
+            <StatusCard result={currentResult} />
+          </div>
+        )}
+
+        {/* History */}
+        <HistoryList history={history} />
       </div>
     </div>
   );
