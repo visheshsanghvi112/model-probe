@@ -115,70 +115,103 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-surface-muted">
+    <div className="min-h-screen bg-gradient-to-br from-background via-surface-muted to-background">
+      {/* Background pattern */}
+      <div className="fixed inset-0 grid-pattern pointer-events-none" />
+      
       <Header />
       
-      <main className="container mx-auto px-4 py-12 max-w-4xl">
+      <main className="relative container mx-auto px-4 py-8 lg:py-16 max-w-5xl">
         {/* Hero Section */}
-        <section className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            Professional API Health Monitoring
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Test your API keys and monitor the health of various LLM providers in real-time. 
-            Get instant feedback on connectivity, latency, and status for enterprise-grade reliability.
-          </p>
+        <section className="text-center mb-12 lg:mb-16 animate-fade-in">
+          <div className="relative">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-6 leading-tight">
+              Professional API Health Monitor
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Test your API keys and monitor the health of various LLM providers in real-time. 
+              Get instant feedback on connectivity, latency, and status for enterprise-grade reliability.
+            </p>
+            
+            {/* Decorative elements */}
+            <div className="absolute -top-8 -left-8 w-16 h-16 bg-primary/10 rounded-full blur-xl animate-pulse-glow hidden lg:block" />
+            <div className="absolute -bottom-8 -right-8 w-20 h-20 bg-info/10 rounded-full blur-xl animate-pulse-glow hidden lg:block" />
+          </div>
         </section>
 
         {/* Main Form */}
-        <div className="bg-gradient-surface rounded-xl border border-card-border shadow-lg p-8 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <ProviderSelect
-              selectedProvider={selectedProvider}
-              onProviderChange={handleProviderChange}
-            />
-            <ModelSelect
-              provider={selectedProvider}
-              selectedModel={selectedModel}
-              onModelChange={setSelectedModel}
-            />
-          </div>
-          
-          <div className="mb-6">
-            <ApiKeyInput
-              apiKey={apiKey}
-              onApiKeyChange={setApiKey}
-            />
-          </div>
+        <div className="glass-strong rounded-2xl shadow-xl-soft p-6 md:p-8 lg:p-10 mb-8 lg:mb-12 animate-fade-in">
+          <div className="space-y-6">
+            {/* Provider and Model Selection */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">Select Provider</label>
+                <ProviderSelect
+                  selectedProvider={selectedProvider}
+                  onProviderChange={handleProviderChange}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">Select Model</label>
+                <ModelSelect
+                  provider={selectedProvider}
+                  selectedModel={selectedModel}
+                  onModelChange={setSelectedModel}
+                />
+              </div>
+            </div>
+            
+            {/* API Key Input */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">API Key</label>
+              <ApiKeyInput
+                apiKey={apiKey}
+                onApiKeyChange={setApiKey}
+              />
+            </div>
 
-          <Button
-            onClick={handleCheck}
-            disabled={isChecking || !selectedProvider || !selectedModel || !apiKey.trim()}
-            className="w-full h-12 text-lg font-semibold bg-gradient-primary hover:shadow-glow transition-all duration-300"
-          >
-            {isChecking ? (
-              <div className="flex items-center gap-2">
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-foreground"></div>
-                Checking API...
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <Zap className="h-5 w-5" />
-                Check API Health
-              </div>
-            )}
-          </Button>
+            {/* Action Button */}
+            <Button
+              onClick={handleCheck}
+              disabled={isChecking || !selectedProvider || !selectedModel || !apiKey.trim()}
+              className="w-full h-14 text-lg font-semibold bg-gradient-primary btn-glow transition-all duration-300 hover:scale-[1.02] disabled:hover:scale-100"
+            >
+              {isChecking ? (
+                <div className="flex items-center gap-3">
+                  <div className="animate-spin rounded-full h-6 w-6 border-2 border-primary-foreground border-t-transparent"></div>
+                  <span>Testing API Connection...</span>
+                </div>
+              ) : (
+                <div className="flex items-center gap-3">
+                  <Zap className="h-6 w-6" />
+                  <span>Check API Health</span>
+                </div>
+              )}
+            </Button>
+          </div>
         </div>
 
         {/* Current Result */}
         {currentResult && (
-          <div className="mb-8">
+          <div className="mb-8 lg:mb-12 animate-status-appear">
+            <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+              <Activity className="h-6 w-6 text-primary" />
+              Current Test Result
+            </h2>
             <StatusCard result={currentResult} />
           </div>
         )}
 
         {/* History */}
-        <HistoryList history={history} />
+        {history.length > 0 && (
+          <div className="animate-fade-in">
+            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
+              <Activity className="h-6 w-6 text-primary" />
+              Test History
+            </h2>
+            <HistoryList history={history} />
+          </div>
+        )}
       </main>
       
       <Footer />

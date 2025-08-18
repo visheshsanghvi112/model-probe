@@ -73,42 +73,54 @@ export const StatusCard = ({ result }: StatusCardProps) => {
   };
 
   return (
-    <div className={`rounded-lg border-2 p-6 shadow-soft animate-status-appear ${getStatusColor(result.status)}`}>
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <span className="text-2xl">{result.provider.icon}</span>
-          <div>
-            <h3 className="font-semibold text-card-foreground">
+    <div className={`glass-strong rounded-2xl shadow-xl-soft p-6 lg:p-8 animate-status-appear transition-all duration-300 hover:shadow-glow-success ${getStatusColor(result.status)}`}>
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+        <div className="flex items-center gap-4">
+          <div className="flex-shrink-0 text-3xl lg:text-4xl">{result.provider.icon}</div>
+          <div className="min-w-0">
+            <h3 className="text-xl lg:text-2xl font-bold text-card-foreground truncate">
               {result.provider.name}
             </h3>
-            <p className="text-sm text-muted-foreground">{result.model}</p>
+            <p className="text-sm lg:text-base text-muted-foreground truncate">{result.model}</p>
           </div>
         </div>
-        {getStatusIcon(result.status)}
+        <div className="flex-shrink-0 self-start">
+          {getStatusIcon(result.status)}
+        </div>
       </div>
       
-      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-        <div className="flex items-center gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm lg:text-base">
+        <div className="flex items-center gap-3 p-3 rounded-xl bg-surface/50 border border-card-border/50">
           {getStatusIcon(result.status)}
-          <span className="font-medium">{getStatusText(result.status)}</span>
+          <div>
+            <p className="text-xs text-muted-foreground uppercase tracking-wide">Status</p>
+            <p className="font-semibold text-card-foreground">{getStatusText(result.status)}</p>
+          </div>
         </div>
         
         {result.latency && (
-          <div className="flex items-center gap-1">
-            <span>•</span>
-            <span>{result.latency}ms</span>
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-surface/50 border border-card-border/50">
+            <div className="w-2 h-2 rounded-full bg-primary"></div>
+            <div>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Latency</p>
+              <p className="font-semibold text-card-foreground">{result.latency}ms</p>
+            </div>
           </div>
         )}
         
-        <div className="flex items-center gap-1">
-          <span>•</span>
-          <span>{formatTimestamp(result.timestamp)}</span>
+        <div className="flex items-center gap-3 p-3 rounded-xl bg-surface/50 border border-card-border/50">
+          <div className="w-2 h-2 rounded-full bg-info"></div>
+          <div>
+            <p className="text-xs text-muted-foreground uppercase tracking-wide">Tested</p>
+            <p className="font-semibold text-card-foreground">{formatTimestamp(result.timestamp)}</p>
+          </div>
         </div>
       </div>
       
       {result.errorMessage && (
-        <div className="mt-3 p-3 rounded-md bg-surface border border-border">
-          <p className="text-sm text-muted-foreground">{result.errorMessage}</p>
+        <div className="mt-6 p-4 rounded-xl bg-error-muted border border-error/20">
+          <p className="text-sm font-medium text-error mb-1">Error Details</p>
+          <p className="text-sm text-error/80">{result.errorMessage}</p>
         </div>
       )}
     </div>
