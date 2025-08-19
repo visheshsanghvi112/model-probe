@@ -8,30 +8,29 @@ interface ProviderSelectProps {
 
 export const ProviderSelect = ({ selectedProvider, onProviderChange }: ProviderSelectProps) => {
   return (
-    <Select
-      value={selectedProvider?.id || ""}
-      onValueChange={(value) => {
-        const provider = PROVIDERS[value];
-        if (provider) onProviderChange(provider);
-      }}
-    >
-      <SelectTrigger className="w-full h-14 glass-strong border-border/50 shadow-glow-primary hover:shadow-glow transition-all duration-300 group">
-        <SelectValue placeholder="Choose your AI provider" className="text-foreground/80" />
-      </SelectTrigger>
-      <SelectContent className="glass-ultimate border-border/50 shadow-ultimate backdrop-blur-2xl">
-        {Object.values(PROVIDERS).map((provider) => (
-          <SelectItem 
-            key={provider.id} 
-            value={provider.id} 
-            className="hover:bg-primary/10 hover:text-primary transition-all duration-200 cursor-pointer py-4"
-          >
-            <div className="flex items-center gap-3">
-              <span className="text-2xl hover:scale-110 transition-transform duration-200">{provider.icon}</span>
-              <span className="font-medium">{provider.name}</span>
-            </div>
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <div className="space-y-2">
+      <label className="text-sm font-medium text-card-foreground">Provider</label>
+      <Select
+        value={selectedProvider?.id || ""}
+        onValueChange={(value) => {
+          const provider = PROVIDERS[value];
+          if (provider) onProviderChange(provider);
+        }}
+      >
+        <SelectTrigger className="w-full bg-surface border-border shadow-soft">
+          <SelectValue placeholder="Select a provider" />
+        </SelectTrigger>
+        <SelectContent className="bg-surface border-border shadow-lg">
+          {Object.values(PROVIDERS).map((provider) => (
+            <SelectItem key={provider.id} value={provider.id} className="hover:bg-surface-muted">
+              <div className="flex items-center gap-2">
+                <span className="text-lg">{provider.icon}</span>
+                <span>{provider.name}</span>
+              </div>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 };

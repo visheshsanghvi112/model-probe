@@ -2,72 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* NEXT-LEVEL CUTTING-EDGE DESIGN SYSTEM */
+/* Modern API Health Checker Design System */
 
 @layer base {
   :root {
-    /* Professional light theme */
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    --surface: 0 0% 98%;
-    --surface-muted: 0 0% 96%;
-    --surface-elevated: 0 0% 100%;
+    /* Enhanced base colors */
+    --background: 240 10% 97%;
+    --foreground: 240 12% 8%;
+    --surface: 0 0% 100%;
+    --surface-muted: 240 5% 96%;
 
-    /* Corporate blue palette */
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 98%;
-    --primary-muted: 221 83% 96%;
-    --primary-hover: 221 83% 48%;
+    /* Premium gradient palette */
+    --primary: 250 84% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-muted: 250 84% 96%;
+    --primary-glow: 250 84% 75%;
 
-    /* Professional status system */
+    /* Enhanced status colors */
     --success: 142 71% 45%;
-    --success-foreground: 0 0% 98%;
-    --success-muted: 142 71% 96%;
+    --success-foreground: 0 0% 100%;
+    --success-muted: 142 71% 95%;
     
-    --error: 0 72% 51%;
-    --error-foreground: 0 0% 98%;
-    --error-muted: 0 72% 96%;
+    --error: 0 84% 60%;
+    --error-foreground: 0 0% 100%;
+    --error-muted: 0 84% 95%;
     
     --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 98%;
-    --warning-muted: 38 92% 96%;
+    --warning-foreground: 0 0% 100%;
+    --warning-muted: 38 92% 95%;
     
-    --info: 199 89% 48%;
-    --info-foreground: 0 0% 98%;
-    --info-muted: 199 89% 96%;
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+    --info-muted: 217 91% 95%;
 
-    /* Professional accent system */
-    --accent: 210 11% 71%;
-    --accent-foreground: 222 47% 11%;
-    --accent-muted: 210 11% 96%;
-
-    /* Professional UI elements */
+    /* Refined UI elements */
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --card-border: 214 32% 91%;
+    --card-foreground: 240 12% 8%;
+    --card-border: 240 6% 88%;
 
     --input: 0 0% 100%;
-    --input-border: 214 32% 91%;
-    --input-foreground: 222 47% 11%;
+    --input-border: 240 6% 88%;
+    --input-foreground: 240 12% 8%;
 
-    --muted: 210 40% 98%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
 
-    --border: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --border: 240 6% 88%;
+    --ring: 250 84% 65%;
 
-    /* Professional gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(221 83% 48%) 100%);
-    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
+    /* Premium gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(250 84% 65%), hsl(217 91% 60%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(160 71% 55%));
+    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(240 5% 98%) 50%, hsl(240 5% 96%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(250 84% 96%) 0%, hsl(217 91% 95%) 100%);
 
-    /* Professional shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+    /* Enhanced shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+    --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.08);
+    --shadow-lg: 0 12px 24px -4px rgb(0 0 0 / 0.12);
+    --shadow-xl: 0 20px 32px -8px rgb(0 0 0 / 0.15);
+    --shadow-glow: 0 0 32px hsl(250 84% 65% / 0.25);
+    --shadow-glow-success: 0 0 24px hsl(142 71% 45% / 0.2);
 
-    --radius: 0.5rem;
+    --radius: 0.875rem;
 
     /* Sidebar colors */
     --sidebar-background: 0 0% 98%;
@@ -148,31 +145,21 @@
 }
 
 @layer components {
-  /* Professional card effects */
+  /* Glassmorphism effects */
   .glass {
-    @apply bg-card border border-border;
-    box-shadow: var(--shadow-sm);
+    @apply backdrop-blur-sm bg-surface/80 border border-card-border/50;
   }
   
   .glass-strong {
-    @apply bg-card border border-border;
-    box-shadow: var(--shadow-md);
+    @apply backdrop-blur-md bg-surface/90 border border-card-border;
   }
 
-  /* Professional button effects */
+  /* Enhanced buttons */
   .btn-glow {
-    @apply transition-all duration-200 ease-out;
-    background: hsl(var(--primary));
-    border: 1px solid hsl(var(--primary));
-    box-shadow: var(--shadow-sm);
+    @apply transition-all duration-300 hover:shadow-glow;
   }
 
-  .btn-glow:hover {
-    background: hsl(var(--primary-hover));
-    box-shadow: var(--shadow-md);
-  }
-
-  /* Professional status indicators */
+  /* Status indicators */
   .status-healthy {
     @apply bg-success text-success-foreground;
   }
@@ -185,21 +172,10 @@
     @apply bg-warning text-warning-foreground;
   }
 
-  /* Subtle pattern */
+  /* Grid patterns */
   .grid-pattern {
-    background-image: 
-      radial-gradient(circle at 25% 25%, hsl(var(--border)) 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.3;
-  }
-
-  /* Professional hover effects */
-  .hover-lift {
-    @apply transition-all duration-200 ease-out;
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-lg);
+    background-image: radial-gradient(circle at 1px 1px, hsl(var(--muted-foreground)) 1px, transparent 0);
+    background-size: 20px 20px;
+    opacity: 0.1;
   }
 }

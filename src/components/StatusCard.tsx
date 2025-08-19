@@ -73,86 +73,56 @@ export const StatusCard = ({ result }: StatusCardProps) => {
   };
 
   return (
-    <div className={`glass-strong rounded-xl p-6 lg:p-8 animate-status-appear hover-lift ${getStatusColor(result.status)}`}>
-      <div>
-        {/* Header section */}
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-          <div className="flex items-center gap-4">
-            <div className="flex-shrink-0 text-3xl lg:text-4xl">
-              {result.provider.icon}
-            </div>
-            <div className="min-w-0">
-              <h3 className="text-xl lg:text-2xl font-semibold text-card-foreground truncate mb-1">
-                {result.provider.name}
-              </h3>
-              <p className="text-sm lg:text-base text-muted-foreground truncate font-mono bg-muted px-2 py-1 rounded">
-                {result.model}
-              </p>
-            </div>
+    <div className={`glass-strong rounded-2xl shadow-xl-soft p-6 lg:p-8 animate-status-appear transition-all duration-300 hover:shadow-glow-success ${getStatusColor(result.status)}`}>
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+        <div className="flex items-center gap-4">
+          <div className="flex-shrink-0 text-3xl lg:text-4xl">{result.provider.icon}</div>
+          <div className="min-w-0">
+            <h3 className="text-xl lg:text-2xl font-bold text-card-foreground truncate">
+              {result.provider.name}
+            </h3>
+            <p className="text-sm lg:text-base text-muted-foreground truncate">{result.model}</p>
           </div>
-          <div className="flex-shrink-0 self-start">
-            {getStatusIcon(result.status)}
+        </div>
+        <div className="flex-shrink-0 self-start">
+          {getStatusIcon(result.status)}
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm lg:text-base">
+        <div className="flex items-center gap-3 p-3 rounded-xl bg-surface/50 border border-card-border/50">
+          {getStatusIcon(result.status)}
+          <div>
+            <p className="text-xs text-muted-foreground uppercase tracking-wide">Status</p>
+            <p className="font-semibold text-card-foreground">{getStatusText(result.status)}</p>
           </div>
         </div>
         
-        {/* Metrics grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm lg:text-base">
-          <div className="glass p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-200">
-            <div className="flex items-center gap-3 mb-2">
-              {getStatusIcon(result.status)}
-              <div className="w-full">
-                <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Status</p>
-                <p className="font-semibold text-card-foreground">{getStatusText(result.status)}</p>
-              </div>
-            </div>
-          </div>
-          
-          {result.latency && (
-            <div className="glass p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-200">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-3 h-3 rounded-full bg-primary"></div>
-                <div className="w-full">
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Response Time</p>
-                  <p className="font-semibold text-card-foreground">
-                    {result.latency}ms
-                    <span className="text-xs text-muted-foreground ml-1">
-                      {result.latency < 500 ? 'Fast' : result.latency < 1000 ? 'Good' : 'Slow'}
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-          
-          <div className="glass p-4 rounded-lg border border-border hover:border-info/50 transition-all duration-200">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-3 h-3 rounded-full bg-info"></div>
-              <div className="w-full">
-                <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Timestamp</p>
-                <p className="font-semibold text-card-foreground text-xs lg:text-sm">
-                  {formatTimestamp(result.timestamp)}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Error section with enhanced styling */}
-        {result.errorMessage && (
-          <div className="mt-8 glass-strong p-6 rounded-2xl border-2 border-error/30 bg-error-muted/20 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-error opacity-5" />
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-3">
-                <XCircle className="h-6 w-6 text-error animate-pulse-error" />
-                <p className="text-base font-bold text-error">Diagnostic Information</p>
-              </div>
-              <p className="text-sm text-error/90 font-mono bg-error/10 p-3 rounded-lg border border-error/20">
-                {result.errorMessage}
-              </p>
+        {result.latency && (
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-surface/50 border border-card-border/50">
+            <div className="w-2 h-2 rounded-full bg-primary"></div>
+            <div>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Latency</p>
+              <p className="font-semibold text-card-foreground">{result.latency}ms</p>
             </div>
           </div>
         )}
+        
+        <div className="flex items-center gap-3 p-3 rounded-xl bg-surface/50 border border-card-border/50">
+          <div className="w-2 h-2 rounded-full bg-info"></div>
+          <div>
+            <p className="text-xs text-muted-foreground uppercase tracking-wide">Tested</p>
+            <p className="font-semibold text-card-foreground">{formatTimestamp(result.timestamp)}</p>
+          </div>
+        </div>
       </div>
+      
+      {result.errorMessage && (
+        <div className="mt-6 p-4 rounded-xl bg-error-muted border border-error/20">
+          <p className="text-sm font-medium text-error mb-1">Error Details</p>
+          <p className="text-sm text-error/80">{result.errorMessage}</p>
+        </div>
+      )}
     </div>
   );
 };
