@@ -10,32 +10,33 @@ interface ModelSelectProps {
 export const ModelSelect = ({ provider, selectedModel, onModelChange }: ModelSelectProps) => {
   if (!provider) {
     return (
-      <div className="space-y-2">
-        <label className="text-sm font-medium text-muted-foreground">Model</label>
-        <Select disabled>
-          <SelectTrigger className="w-full bg-muted">
-            <SelectValue placeholder="Select a provider first" />
-          </SelectTrigger>
-        </Select>
-      </div>
+      <Select disabled>
+        <SelectTrigger className="w-full h-14 glass border-border/30 opacity-50 cursor-not-allowed">
+          <SelectValue placeholder="Select a provider first" className="text-muted-foreground" />
+        </SelectTrigger>
+      </Select>
     );
   }
 
   return (
-    <div className="space-y-2">
-      <label className="text-sm font-medium text-card-foreground">Model</label>
-      <Select value={selectedModel} onValueChange={onModelChange}>
-        <SelectTrigger className="w-full bg-surface border-border shadow-soft">
-          <SelectValue placeholder="Select a model" />
-        </SelectTrigger>
-        <SelectContent className="bg-surface border-border shadow-lg">
-          {provider.models.map((model) => (
-            <SelectItem key={model} value={model} className="hover:bg-surface-muted">
+    <Select value={selectedModel} onValueChange={onModelChange}>
+      <SelectTrigger className="w-full h-14 glass-strong border-border/50 shadow-glow-accent hover:shadow-glow-accent transition-all duration-300 group">
+        <SelectValue placeholder="Choose AI model" className="text-foreground/80" />
+      </SelectTrigger>
+      <SelectContent className="glass-ultimate border-border/50 shadow-ultimate backdrop-blur-2xl">
+        {provider.models.map((model) => (
+          <SelectItem 
+            key={model} 
+            value={model} 
+            className="hover:bg-accent/10 hover:text-accent transition-all duration-200 cursor-pointer py-3 font-mono text-sm"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-accent/60" />
               {model}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
+            </div>
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 };

@@ -115,44 +115,54 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-surface-muted to-background">
-      {/* Background pattern */}
-      <div className="fixed inset-0 grid-pattern pointer-events-none" />
+    <div className="min-h-screen bg-background relative">
+      {/* Subtle professional background */}
+      <div className="fixed inset-0 bg-gradient-hero" />
+      <div className="fixed inset-0 grid-pattern" />
       
       <Header />
       
-      <main className="relative container mx-auto px-4 py-8 lg:py-16 max-w-5xl">
-        {/* Hero Section */}
-        <section className="text-center mb-12 lg:mb-16 animate-fade-in">
-          <div className="relative">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-6 leading-tight">
-              Professional API Health Monitor
+      <main className="relative container mx-auto px-4 py-8 lg:py-16 max-w-6xl z-10">
+        {/* Hero Section with next-level design */}
+        <section className="text-center mb-12 lg:mb-16 animate-fade-in-up">
+          <div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground">
+              API Health Monitor
+              <span className="block text-xl md:text-2xl lg:text-3xl font-normal text-muted-foreground mt-3">
+                Professional Testing Platform
+              </span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Test your API keys and monitor the health of various LLM providers in real-time. 
-              Get instant feedback on connectivity, latency, and status for enterprise-grade reliability.
-            </p>
             
-            {/* Decorative elements */}
-            <div className="absolute -top-8 -left-8 w-16 h-16 bg-primary/10 rounded-full blur-xl animate-pulse-glow hidden lg:block" />
-            <div className="absolute -bottom-8 -right-8 w-20 h-20 bg-info/10 rounded-full blur-xl animate-pulse-glow hidden lg:block" />
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+              Enterprise-grade API monitoring with real-time testing, latency detection, and reliability metrics.
+            </p>
           </div>
         </section>
 
-        {/* Main Form */}
-        <div className="glass-strong rounded-2xl shadow-xl-soft p-6 md:p-8 lg:p-10 mb-8 lg:mb-12 animate-fade-in">
+        {/* Professional form design */}
+        <div className="glass-strong rounded-xl p-6 md:p-8 mb-10 lg:mb-12 hover-lift">
+          
           <div className="space-y-6">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-semibold text-foreground mb-2">Configure Your Test</h2>
+              <p className="text-muted-foreground">Select your provider, model, and enter your API key</p>
+            </div>
+            
             {/* Provider and Model Selection */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Select Provider</label>
+              <div className="space-y-3">
+                <label className="text-base font-medium text-foreground">
+                  Select Provider
+                </label>
                 <ProviderSelect
                   selectedProvider={selectedProvider}
                   onProviderChange={handleProviderChange}
                 />
               </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Select Model</label>
+              <div className="space-y-3">
+                <label className="text-base font-medium text-foreground">
+                  Select Model
+                </label>
                 <ModelSelect
                   provider={selectedProvider}
                   selectedModel={selectedModel}
@@ -162,53 +172,63 @@ const Index = () => {
             </div>
             
             {/* API Key Input */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-foreground">API Key</label>
+            <div className="space-y-3">
+              <label className="text-base font-medium text-foreground">
+                API Key
+              </label>
               <ApiKeyInput
                 apiKey={apiKey}
                 onApiKeyChange={setApiKey}
               />
             </div>
 
-            {/* Action Button */}
+            {/* Professional action button */}
             <Button
               onClick={handleCheck}
               disabled={isChecking || !selectedProvider || !selectedModel || !apiKey.trim()}
-              className="w-full h-14 text-lg font-semibold bg-gradient-primary btn-glow transition-all duration-300 hover:scale-[1.02] disabled:hover:scale-100"
+              className="w-full h-12 text-base font-medium btn-glow disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isChecking ? (
-                <div className="flex items-center gap-3">
-                  <div className="animate-spin rounded-full h-6 w-6 border-2 border-primary-foreground border-t-transparent"></div>
-                  <span>Testing API Connection...</span>
-                </div>
-              ) : (
-                <div className="flex items-center gap-3">
-                  <Zap className="h-6 w-6" />
-                  <span>Check API Health</span>
-                </div>
-              )}
+              <div className="flex items-center justify-center gap-3">
+                {isChecking ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-primary-foreground/30 border-t-primary-foreground"></div>
+                    <span>Checking API...</span>
+                  </>
+                ) : (
+                  <>
+                    <Zap className="h-4 w-4" />
+                    <span>Run Health Check</span>
+                  </>
+                )}
+              </div>
             </Button>
           </div>
         </div>
 
-        {/* Current Result */}
+        {/* Current Result with epic styling */}
         {currentResult && (
-          <div className="mb-8 lg:mb-12 animate-status-appear">
-            <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <Activity className="h-6 w-6 text-primary" />
-              Current Test Result
-            </h2>
+          <div className="mb-12 lg:mb-16 animate-status-appear">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold text-foreground mb-3 flex items-center justify-center gap-3">
+                <Activity className="h-10 w-10 text-primary animate-pulse-glow" />
+                <span className="neon-text">Live Results</span>
+              </h2>
+              <p className="text-muted-foreground text-lg">Real-time API health analysis</p>
+            </div>
             <StatusCard result={currentResult} />
           </div>
         )}
 
-        {/* History */}
+        {/* History with advanced presentation */}
         {history.length > 0 && (
           <div className="animate-fade-in">
-            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-              <Activity className="h-6 w-6 text-primary" />
-              Test History
-            </h2>
+            <div className="text-center mb-10">
+              <h2 className="text-4xl font-bold text-foreground mb-3 flex items-center justify-center gap-3">
+                <Activity className="h-10 w-10 text-accent animate-pulse-glow" />
+                <span className="neon-text">Test Archive</span>
+              </h2>
+              <p className="text-muted-foreground text-lg">Previous API health checks</p>
+            </div>
             <HistoryList history={history} />
           </div>
         )}
