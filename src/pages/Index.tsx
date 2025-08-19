@@ -115,64 +115,43 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Ultra-advanced background effects */}
-      <div className="fixed inset-0 bg-gradient-hero opacity-40" />
-      <div className="fixed inset-0 mesh-gradient" />
+    <div className="min-h-screen bg-background relative">
+      {/* Subtle professional background */}
+      <div className="fixed inset-0 bg-gradient-hero" />
       <div className="fixed inset-0 grid-pattern" />
-      <div className="fixed inset-0 particles" />
-      
-      {/* Floating orbs */}
-      <div className="fixed top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl float" />
-      <div className="fixed top-3/4 right-1/4 w-24 h-24 bg-accent/20 rounded-full blur-2xl float-delayed" />
-      <div className="fixed top-1/2 left-3/4 w-20 h-20 bg-info/20 rounded-full blur-2xl float" />
       
       <Header />
       
       <main className="relative container mx-auto px-4 py-8 lg:py-16 max-w-6xl z-10">
         {/* Hero Section with next-level design */}
-        <section className="text-center mb-16 lg:mb-24 animate-fade-in-up">
-          <div className="relative">
-            {/* Main title with subtle shimmer */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-text-shimmer bg-200% animate-text-shimmer bg-clip-text text-transparent">
-                API Health Monitor
-              </span>
+        <section className="text-center mb-12 lg:mb-16 animate-fade-in-up">
+          <div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground">
+              API Health Monitor
               <span className="block text-xl md:text-2xl lg:text-3xl font-normal text-muted-foreground mt-3">
                 Professional Testing Platform
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed mb-8">
-              Professional API monitoring with real-time testing, latency detection, and reliability metrics.
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+              Enterprise-grade API monitoring with real-time testing, latency detection, and reliability metrics.
             </p>
-            
-            {/* Advanced decorative elements */}
-            <div className="absolute -top-20 -left-20 w-40 h-40 bg-primary/30 rounded-full blur-3xl animate-pulse-glow hidden lg:block" />
-            <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-accent/25 rounded-full blur-3xl animate-pulse-glow hidden lg:block" />
-            <div className="absolute top-10 right-10 w-24 h-24 bg-info/20 rounded-full blur-2xl animate-float hidden lg:block" />
-            
-            {/* Scanning line effect */}
-            <div className="absolute inset-0 scan-line" />
           </div>
         </section>
 
         {/* Professional form design */}
-        <div className="glass-strong rounded-2xl shadow-lg p-6 md:p-8 mb-10 lg:mb-12 animate-scale-in hover-lift relative">
-          {/* Subtle border accent */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-primary opacity-5 blur-sm animate-glow-rotate" />
+        <div className="glass-strong rounded-xl p-6 md:p-8 mb-10 lg:mb-12 hover-lift">
           
-          <div className="relative z-10 space-y-8">
+          <div className="space-y-6">
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-foreground mb-2">Configure Your Test</h2>
+              <h2 className="text-2xl font-semibold text-foreground mb-2">Configure Your Test</h2>
               <p className="text-muted-foreground">Select your provider, model, and enter your API key</p>
             </div>
             
             {/* Provider and Model Selection */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="space-y-3 animate-slide-in-left">
-                <label className="text-base font-semibold text-foreground flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
+              <div className="space-y-3">
+                <label className="text-base font-medium text-foreground">
                   Select Provider
                 </label>
                 <ProviderSelect
@@ -180,9 +159,8 @@ const Index = () => {
                   onProviderChange={handleProviderChange}
                 />
               </div>
-              <div className="space-y-3 animate-slide-in-right">
-                <label className="text-base font-semibold text-foreground flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse-glow" />
+              <div className="space-y-3">
+                <label className="text-base font-medium text-foreground">
                   Select Model
                 </label>
                 <ModelSelect
@@ -193,10 +171,9 @@ const Index = () => {
               </div>
             </div>
             
-            {/* API Key Input with advanced styling */}
-            <div className="space-y-3 animate-fade-in">
-              <label className="text-base font-semibold text-foreground flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-info animate-pulse-glow" />
+            {/* API Key Input */}
+            <div className="space-y-3">
+              <label className="text-base font-medium text-foreground">
                 API Key
               </label>
               <ApiKeyInput
@@ -209,25 +186,21 @@ const Index = () => {
             <Button
               onClick={handleCheck}
               disabled={isChecking || !selectedProvider || !selectedModel || !apiKey.trim()}
-              className="w-full h-12 text-lg font-semibold btn-glow relative overflow-hidden group transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full h-12 text-base font-medium btn-glow disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <div className="relative z-10 flex items-center justify-center gap-3">
+              <div className="flex items-center justify-center gap-3">
                 {isChecking ? (
                   <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-2 border-primary-foreground/30 border-t-primary-foreground"></div>
-                    <span>Checking API Connection...</span>
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-primary-foreground/30 border-t-primary-foreground"></div>
+                    <span>Checking API...</span>
                   </>
                 ) : (
                   <>
-                    <Zap className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                    <Zap className="h-4 w-4" />
                     <span>Run Health Check</span>
-                    <Activity className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300" />
                   </>
                 )}
               </div>
-              
-              {/* Button shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shine_0.5s_ease-out] transform -skew-x-12"></div>
             </Button>
           </div>
         </div>

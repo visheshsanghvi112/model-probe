@@ -6,86 +6,68 @@
 
 @layer base {
   :root {
-    /* Ultra-premium base colors with depth */
-    --background: 222 47% 4%;
-    --foreground: 210 40% 98%;
-    --surface: 223 47% 7%;
-    --surface-muted: 222 47% 11%;
-    --surface-elevated: 223 47% 9%;
+    /* Professional light theme */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --surface: 0 0% 98%;
+    --surface-muted: 0 0% 96%;
+    --surface-elevated: 0 0% 100%;
 
-    /* Professional gradient palette */
-    --primary: 210 40% 65%;
-    --primary-foreground: 222 47% 4%;
-    --primary-muted: 210 40% 15%;
-    --primary-glow: 210 40% 70%;
-    --primary-variant: 220 30% 60%;
+    /* Corporate blue palette */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 98%;
+    --primary-muted: 221 83% 96%;
+    --primary-hover: 221 83% 48%;
 
     /* Professional status system */
-    --success: 142 76% 36%;
-    --success-foreground: 222 47% 4%;
-    --success-muted: 142 76% 10%;
-    --success-glow: 142 76% 45%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 98%;
+    --success-muted: 142 71% 96%;
     
-    --error: 0 84% 60%;
-    --error-foreground: 222 47% 4%;
-    --error-muted: 0 84% 10%;
-    --error-glow: 0 84% 65%;
+    --error: 0 72% 51%;
+    --error-foreground: 0 0% 98%;
+    --error-muted: 0 72% 96%;
     
     --warning: 38 92% 50%;
-    --warning-foreground: 222 47% 4%;
-    --warning-muted: 38 92% 10%;
-    --warning-glow: 38 92% 55%;
+    --warning-foreground: 0 0% 98%;
+    --warning-muted: 38 92% 96%;
     
-    --info: 201 96% 32%;
-    --info-foreground: 222 47% 4%;
-    --info-muted: 201 96% 10%;
-    --info-glow: 201 96% 40%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 98%;
+    --info-muted: 199 89% 96%;
 
     /* Professional accent system */
-    --accent: 240 5% 65%;
-    --accent-foreground: 222 47% 4%;
-    --accent-muted: 240 5% 15%;
-    --accent-glow: 240 5% 70%;
+    --accent: 210 11% 71%;
+    --accent-foreground: 222 47% 11%;
+    --accent-muted: 210 11% 96%;
 
-    /* Premium UI elements */
-    --card: 223 47% 8%;
-    --card-foreground: 210 40% 98%;
-    --card-border: 220 20% 20%;
-    --card-elevated: 223 47% 12%;
+    /* Professional UI elements */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --card-border: 214 32% 91%;
 
-    --input: 223 47% 9%;
-    --input-border: 220 20% 25%;
-    --input-foreground: 210 40% 98%;
+    --input: 0 0% 100%;
+    --input-border: 214 32% 91%;
+    --input-foreground: 222 47% 11%;
 
-    --muted: 222 47% 11%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215 16% 47%;
 
-    --border: 220 20% 20%;
-    --ring: 260 100% 80%;
+    --border: 214 32% 91%;
+    --ring: 221 83% 53%;
 
     /* Professional gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(210 40% 65%) 0%, hsl(220 30% 60%) 50%, hsl(240 5% 65%) 100%);
-    --gradient-primary-reverse: linear-gradient(225deg, hsl(210 40% 65%) 0%, hsl(220 30% 60%) 50%, hsl(240 5% 65%) 100%);
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(158 64% 52%) 100%);
-    --gradient-error: linear-gradient(135deg, hsl(0 84% 60%) 0%, hsl(354 70% 54%) 100%);
-    --gradient-warning: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(32 95% 44%) 100%);
-    --gradient-surface: linear-gradient(145deg, hsl(223 47% 8%) 0%, hsl(223 47% 12%) 50%, hsl(223 47% 7%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(223 47% 8%) 0%, hsl(210 40% 15%) 25%, hsl(240 5% 15%) 50%, hsl(201 96% 15%) 75%, hsl(142 76% 15%) 100%);
-    --gradient-mesh: radial-gradient(circle at 20% 50%, hsl(210 40% 20%) 0%, transparent 50%), radial-gradient(circle at 80% 20%, hsl(240 5% 20%) 0%, transparent 50%), radial-gradient(circle at 40% 80%, hsl(201 96% 20%) 0%, transparent 50%);
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(221 83% 48%) 100%);
+    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
 
-    /* Professional shadows with subtle glow */
-    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3);
-    --shadow-md: 0 4px 20px -2px rgb(0 0 0 / 0.4);
-    --shadow-lg: 0 12px 40px -4px rgb(0 0 0 / 0.5);
-    --shadow-xl: 0 25px 60px -12px rgb(0 0 0 / 0.6);
-    --shadow-glow: 0 0 20px hsl(210 40% 65% / 0.2), 0 0 40px hsl(210 40% 65% / 0.1);
-    --shadow-glow-primary: 0 0 15px hsl(210 40% 65% / 0.3), 0 0 30px hsl(220 30% 60% / 0.2), 0 0 45px hsl(240 5% 65% / 0.1);
-    --shadow-glow-success: 0 0 15px hsl(142 76% 36% / 0.3), 0 0 30px hsl(142 76% 36% / 0.15);
-    --shadow-glow-error: 0 0 15px hsl(0 84% 60% / 0.3), 0 0 30px hsl(0 84% 60% / 0.15);
-    --shadow-glow-accent: 0 0 15px hsl(240 5% 65% / 0.3), 0 0 30px hsl(240 5% 65% / 0.15);
-    --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.3);
+    /* Professional shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
 
-    --radius: 1rem;
+    --radius: 0.5rem;
 
     /* Sidebar colors */
     --sidebar-background: 0 0% 98%;
@@ -166,150 +148,58 @@
 }
 
 @layer components {
-  /* Ultra-advanced glassmorphism with depth */
+  /* Professional card effects */
   .glass {
-    @apply backdrop-blur-xl bg-surface/30 border border-border/30;
-    box-shadow: var(--shadow-inner), var(--shadow-lg);
+    @apply bg-card border border-border;
+    box-shadow: var(--shadow-sm);
   }
   
   .glass-strong {
-    @apply backdrop-blur-2xl bg-surface/50 border border-border/50;
-    box-shadow: var(--shadow-inner), var(--shadow-xl);
+    @apply bg-card border border-border;
+    box-shadow: var(--shadow-md);
   }
 
-  .glass-ultimate {
-    @apply backdrop-blur-3xl bg-surface/60 border border-border/60;
-    box-shadow: var(--shadow-inner), var(--shadow-glow-primary);
-  }
-
-  /* Next-level button effects */
+  /* Professional button effects */
   .btn-glow {
-    @apply transition-all duration-500 ease-out;
-    background: var(--gradient-primary);
+    @apply transition-all duration-200 ease-out;
+    background: hsl(var(--primary));
     border: 1px solid hsl(var(--primary));
-    box-shadow: var(--shadow-glow-primary);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-glow::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-  }
-
-  .btn-glow:hover::before {
-    left: 100%;
+    box-shadow: var(--shadow-sm);
   }
 
   .btn-glow:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: var(--shadow-glow-primary), 0 10px 30px -10px hsl(var(--primary) / 0.5);
+    background: hsl(var(--primary-hover));
+    box-shadow: var(--shadow-md);
   }
 
-  /* Advanced status indicators with animations */
+  /* Professional status indicators */
   .status-healthy {
     @apply bg-success text-success-foreground;
-    box-shadow: var(--shadow-glow-success);
-    animation: pulse-success 2s infinite;
   }
   
   .status-unhealthy {
     @apply bg-error text-error-foreground;
-    box-shadow: var(--shadow-glow-error);
-    animation: pulse-error 2s infinite;
   }
   
   .status-warning {
     @apply bg-warning text-warning-foreground;
-    animation: pulse-warning 2s infinite;
   }
 
-  /* Ultra-sophisticated patterns */
+  /* Subtle pattern */
   .grid-pattern {
     background-image: 
-      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 2px, transparent 2px),
-      radial-gradient(circle at 75% 75%, hsl(var(--accent) / 0.1) 1px, transparent 1px);
-    background-size: 30px 30px, 20px 20px;
-    opacity: 0.6;
-  }
-
-  .mesh-gradient {
-    background: var(--gradient-mesh);
+      radial-gradient(circle at 25% 25%, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 40px 40px;
     opacity: 0.3;
   }
 
-  /* Floating animation for decorative elements */
-  .float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .float-delayed {
-    animation: float 6s ease-in-out infinite;
-    animation-delay: 2s;
-  }
-
-  /* Particle effects */
-  .particles::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.3) 2px, transparent 2px),
-      radial-gradient(circle at 80% 20%, hsl(var(--accent) / 0.3) 1px, transparent 1px),
-      radial-gradient(circle at 40% 40%, hsl(var(--info) / 0.2) 1px, transparent 1px);
-    background-size: 50px 50px, 30px 30px, 40px 40px;
-    animation: drift 20s linear infinite;
-    pointer-events: none;
-  }
-
-  /* Advanced hover effects */
+  /* Professional hover effects */
   .hover-lift {
-    @apply transition-all duration-300 ease-out;
+    @apply transition-all duration-200 ease-out;
   }
 
   .hover-lift:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: var(--shadow-glow-primary);
-  }
-
-  /* Magnetic hover effect */
-  .magnetic {
-    @apply transition-transform duration-300 ease-out;
-  }
-
-  /* Neon text effect */
-  .neon-text {
-    color: hsl(var(--primary));
-    text-shadow: 
-      0 0 5px hsl(var(--primary) / 0.5),
-      0 0 10px hsl(var(--primary) / 0.4),
-      0 0 15px hsl(var(--primary) / 0.3),
-      0 0 20px hsl(var(--primary) / 0.2);
-  }
-
-  /* Scanning line effect */
-  .scan-line {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .scan-line::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
-    animation: scan 3s ease-in-out infinite;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
   }
 }

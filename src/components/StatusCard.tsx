@@ -73,11 +73,8 @@ export const StatusCard = ({ result }: StatusCardProps) => {
   };
 
   return (
-    <div className={`glass-strong rounded-2xl shadow-lg p-6 lg:p-8 animate-status-appear hover-lift relative ${getStatusColor(result.status)}`}>
-      {/* Subtle status accent */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-primary opacity-5 animate-glow-rotate" />
-      
-      <div className="relative z-10">
+    <div className={`glass-strong rounded-xl p-6 lg:p-8 animate-status-appear hover-lift ${getStatusColor(result.status)}`}>
+      <div>
         {/* Header section */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
           <div className="flex items-center gap-4">
@@ -85,10 +82,10 @@ export const StatusCard = ({ result }: StatusCardProps) => {
               {result.provider.icon}
             </div>
             <div className="min-w-0">
-              <h3 className="text-xl lg:text-2xl font-bold text-card-foreground truncate mb-1">
+              <h3 className="text-xl lg:text-2xl font-semibold text-card-foreground truncate mb-1">
                 {result.provider.name}
               </h3>
-              <p className="text-sm lg:text-base text-muted-foreground truncate font-mono bg-surface/50 px-2 py-1 rounded">
+              <p className="text-sm lg:text-base text-muted-foreground truncate font-mono bg-muted px-2 py-1 rounded">
                 {result.model}
               </p>
             </div>
@@ -100,7 +97,7 @@ export const StatusCard = ({ result }: StatusCardProps) => {
         
         {/* Metrics grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm lg:text-base">
-          <div className="glass p-4 rounded-xl border border-card-border/30 hover:border-primary/30 transition-all duration-200">
+          <div className="glass p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-200">
             <div className="flex items-center gap-3 mb-2">
               {getStatusIcon(result.status)}
               <div className="w-full">
@@ -111,9 +108,9 @@ export const StatusCard = ({ result }: StatusCardProps) => {
           </div>
           
           {result.latency && (
-            <div className="glass p-4 rounded-xl border border-card-border/30 hover:border-accent/30 transition-all duration-200">
+            <div className="glass p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-200">
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-3 h-3 rounded-full bg-primary animate-pulse-glow"></div>
+                <div className="w-3 h-3 rounded-full bg-primary"></div>
                 <div className="w-full">
                   <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Response Time</p>
                   <p className="font-semibold text-card-foreground">
@@ -127,9 +124,9 @@ export const StatusCard = ({ result }: StatusCardProps) => {
             </div>
           )}
           
-          <div className="glass p-4 rounded-xl border border-card-border/30 hover:border-info/30 transition-all duration-200">
+          <div className="glass p-4 rounded-lg border border-border hover:border-info/50 transition-all duration-200">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-3 h-3 rounded-full bg-info animate-pulse-glow"></div>
+              <div className="w-3 h-3 rounded-full bg-info"></div>
               <div className="w-full">
                 <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Timestamp</p>
                 <p className="font-semibold text-card-foreground text-xs lg:text-sm">
