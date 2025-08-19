@@ -115,44 +115,77 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-surface-muted to-background">
-      {/* Background pattern */}
-      <div className="fixed inset-0 grid-pattern pointer-events-none" />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Ultra-advanced background effects */}
+      <div className="fixed inset-0 bg-gradient-hero opacity-40" />
+      <div className="fixed inset-0 mesh-gradient" />
+      <div className="fixed inset-0 grid-pattern" />
+      <div className="fixed inset-0 particles" />
+      
+      {/* Floating orbs */}
+      <div className="fixed top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl float" />
+      <div className="fixed top-3/4 right-1/4 w-24 h-24 bg-accent/20 rounded-full blur-2xl float-delayed" />
+      <div className="fixed top-1/2 left-3/4 w-20 h-20 bg-info/20 rounded-full blur-2xl float" />
       
       <Header />
       
-      <main className="relative container mx-auto px-4 py-8 lg:py-16 max-w-5xl">
-        {/* Hero Section */}
-        <section className="text-center mb-12 lg:mb-16 animate-fade-in">
+      <main className="relative container mx-auto px-4 py-8 lg:py-16 max-w-6xl z-10">
+        {/* Hero Section with next-level design */}
+        <section className="text-center mb-16 lg:mb-24 animate-fade-in-up">
           <div className="relative">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-6 leading-tight">
-              Professional API Health Monitor
+            {/* Main title with shimmer effect */}
+            <h1 className="text-5xl md:text-6xl lg:text-8xl font-black mb-8 leading-tight relative">
+              <span className="bg-text-shimmer bg-200% animate-text-shimmer bg-clip-text text-transparent neon-text">
+                API Health Monitor
+              </span>
+              <span className="block text-2xl md:text-3xl lg:text-4xl font-light text-muted-foreground mt-4">
+                Next-Generation Testing Platform
+              </span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Test your API keys and monitor the health of various LLM providers in real-time. 
-              Get instant feedback on connectivity, latency, and status for enterprise-grade reliability.
+            
+            <p className="text-xl md:text-2xl text-foreground/80 max-w-4xl mx-auto leading-relaxed mb-12">
+              Experience the future of API monitoring with cutting-edge real-time testing, 
+              ultra-fast latency detection, and enterprise-grade reliability metrics.
             </p>
             
-            {/* Decorative elements */}
-            <div className="absolute -top-8 -left-8 w-16 h-16 bg-primary/10 rounded-full blur-xl animate-pulse-glow hidden lg:block" />
-            <div className="absolute -bottom-8 -right-8 w-20 h-20 bg-info/10 rounded-full blur-xl animate-pulse-glow hidden lg:block" />
+            {/* Advanced decorative elements */}
+            <div className="absolute -top-20 -left-20 w-40 h-40 bg-primary/30 rounded-full blur-3xl animate-pulse-glow hidden lg:block" />
+            <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-accent/25 rounded-full blur-3xl animate-pulse-glow hidden lg:block" />
+            <div className="absolute top-10 right-10 w-24 h-24 bg-info/20 rounded-full blur-2xl animate-float hidden lg:block" />
+            
+            {/* Scanning line effect */}
+            <div className="absolute inset-0 scan-line" />
           </div>
         </section>
 
-        {/* Main Form */}
-        <div className="glass-strong rounded-2xl shadow-xl-soft p-6 md:p-8 lg:p-10 mb-8 lg:mb-12 animate-fade-in">
-          <div className="space-y-6">
-            {/* Provider and Model Selection */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Select Provider</label>
+        {/* Ultimate form design */}
+        <div className="glass-ultimate rounded-3xl shadow-ultimate p-8 md:p-10 lg:p-12 mb-12 lg:mb-16 animate-scale-in hover-lift relative overflow-hidden">
+          {/* Animated border glow */}
+          <div className="absolute inset-0 rounded-3xl bg-gradient-primary opacity-20 blur-sm animate-glow-rotate" />
+          
+          <div className="relative z-10 space-y-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-foreground mb-2">Configure Your Test</h2>
+              <p className="text-muted-foreground">Select your provider, model, and enter your API key</p>
+            </div>
+            
+            {/* Provider and Model Selection with staggered animations */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-3 animate-slide-in-left">
+                <label className="text-base font-semibold text-foreground flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
+                  Select Provider
+                </label>
                 <ProviderSelect
                   selectedProvider={selectedProvider}
                   onProviderChange={handleProviderChange}
                 />
               </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Select Model</label>
+              <div className="space-y-3 animate-slide-in-right">
+                <label className="text-base font-semibold text-foreground flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse-glow" />
+                  Select Model
+                </label>
                 <ModelSelect
                   provider={selectedProvider}
                   selectedModel={selectedModel}
@@ -161,54 +194,72 @@ const Index = () => {
               </div>
             </div>
             
-            {/* API Key Input */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-foreground">API Key</label>
+            {/* API Key Input with advanced styling */}
+            <div className="space-y-3 animate-fade-in">
+              <label className="text-base font-semibold text-foreground flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-info animate-pulse-glow" />
+                API Key
+              </label>
               <ApiKeyInput
                 apiKey={apiKey}
                 onApiKeyChange={setApiKey}
               />
             </div>
 
-            {/* Action Button */}
+            {/* Ultra-advanced action button */}
             <Button
               onClick={handleCheck}
               disabled={isChecking || !selectedProvider || !selectedModel || !apiKey.trim()}
-              className="w-full h-14 text-lg font-semibold bg-gradient-primary btn-glow transition-all duration-300 hover:scale-[1.02] disabled:hover:scale-100"
+              className="w-full h-16 text-xl font-bold btn-glow relative overflow-hidden group transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isChecking ? (
-                <div className="flex items-center gap-3">
-                  <div className="animate-spin rounded-full h-6 w-6 border-2 border-primary-foreground border-t-transparent"></div>
-                  <span>Testing API Connection...</span>
-                </div>
-              ) : (
-                <div className="flex items-center gap-3">
-                  <Zap className="h-6 w-6" />
-                  <span>Check API Health</span>
-                </div>
-              )}
+              <div className="relative z-10 flex items-center justify-center gap-4">
+                {isChecking ? (
+                  <>
+                    <div className="relative">
+                      <div className="animate-spin rounded-full h-8 w-8 border-3 border-primary-foreground/30 border-t-primary-foreground"></div>
+                      <div className="absolute inset-0 animate-ping rounded-full h-8 w-8 border border-primary-foreground/50"></div>
+                    </div>
+                    <span className="tracking-wide">Analyzing API Connection...</span>
+                  </>
+                ) : (
+                  <>
+                    <Zap className="h-8 w-8 group-hover:scale-110 transition-transform duration-300" />
+                    <span className="tracking-wide">Launch Health Check</span>
+                    <Activity className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+                  </>
+                )}
+              </div>
+              
+              {/* Button shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shine_0.5s_ease-out] transform -skew-x-12"></div>
             </Button>
           </div>
         </div>
 
-        {/* Current Result */}
+        {/* Current Result with epic styling */}
         {currentResult && (
-          <div className="mb-8 lg:mb-12 animate-status-appear">
-            <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <Activity className="h-6 w-6 text-primary" />
-              Current Test Result
-            </h2>
+          <div className="mb-12 lg:mb-16 animate-status-appear">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold text-foreground mb-3 flex items-center justify-center gap-3">
+                <Activity className="h-10 w-10 text-primary animate-pulse-glow" />
+                <span className="neon-text">Live Results</span>
+              </h2>
+              <p className="text-muted-foreground text-lg">Real-time API health analysis</p>
+            </div>
             <StatusCard result={currentResult} />
           </div>
         )}
 
-        {/* History */}
+        {/* History with advanced presentation */}
         {history.length > 0 && (
           <div className="animate-fade-in">
-            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-              <Activity className="h-6 w-6 text-primary" />
-              Test History
-            </h2>
+            <div className="text-center mb-10">
+              <h2 className="text-4xl font-bold text-foreground mb-3 flex items-center justify-center gap-3">
+                <Activity className="h-10 w-10 text-accent animate-pulse-glow" />
+                <span className="neon-text">Test Archive</span>
+              </h2>
+              <p className="text-muted-foreground text-lg">Previous API health checks</p>
+            </div>
             <HistoryList history={history} />
           </div>
         )}

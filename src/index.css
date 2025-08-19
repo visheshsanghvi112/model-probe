@@ -2,69 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern API Health Checker Design System */
+/* NEXT-LEVEL CUTTING-EDGE DESIGN SYSTEM */
 
 @layer base {
   :root {
-    /* Enhanced base colors */
-    --background: 240 10% 97%;
-    --foreground: 240 12% 8%;
-    --surface: 0 0% 100%;
-    --surface-muted: 240 5% 96%;
+    /* Ultra-premium base colors with depth */
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+    --surface: 223 47% 7%;
+    --surface-muted: 222 47% 11%;
+    --surface-elevated: 223 47% 9%;
 
-    /* Premium gradient palette */
-    --primary: 250 84% 65%;
-    --primary-foreground: 0 0% 100%;
-    --primary-muted: 250 84% 96%;
-    --primary-glow: 250 84% 75%;
+    /* Cutting-edge neon gradient palette */
+    --primary: 260 100% 80%;
+    --primary-foreground: 222 47% 4%;
+    --primary-muted: 260 100% 15%;
+    --primary-glow: 260 100% 85%;
+    --primary-variant: 280 100% 70%;
 
-    /* Enhanced status colors */
-    --success: 142 71% 45%;
-    --success-foreground: 0 0% 100%;
-    --success-muted: 142 71% 95%;
+    /* Advanced multi-hue status system */
+    --success: 120 100% 50%;
+    --success-foreground: 222 47% 4%;
+    --success-muted: 120 100% 10%;
+    --success-glow: 120 100% 60%;
     
-    --error: 0 84% 60%;
-    --error-foreground: 0 0% 100%;
-    --error-muted: 0 84% 95%;
+    --error: 0 100% 65%;
+    --error-foreground: 222 47% 4%;
+    --error-muted: 0 100% 10%;
+    --error-glow: 0 100% 70%;
     
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-    --warning-muted: 38 92% 95%;
+    --warning: 45 100% 60%;
+    --warning-foreground: 222 47% 4%;
+    --warning-muted: 45 100% 10%;
+    --warning-glow: 45 100% 65%;
     
-    --info: 217 91% 60%;
-    --info-foreground: 0 0% 100%;
-    --info-muted: 217 91% 95%;
+    --info: 200 100% 70%;
+    --info-foreground: 222 47% 4%;
+    --info-muted: 200 100% 10%;
+    --info-glow: 200 100% 75%;
 
-    /* Refined UI elements */
-    --card: 0 0% 100%;
-    --card-foreground: 240 12% 8%;
-    --card-border: 240 6% 88%;
+    /* Sophisticated accent system */
+    --accent: 320 100% 75%;
+    --accent-foreground: 222 47% 4%;
+    --accent-muted: 320 100% 15%;
+    --accent-glow: 320 100% 80%;
 
-    --input: 0 0% 100%;
-    --input-border: 240 6% 88%;
-    --input-foreground: 240 12% 8%;
+    /* Premium UI elements */
+    --card: 223 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 220 20% 20%;
+    --card-elevated: 223 47% 12%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+    --input: 223 47% 9%;
+    --input-border: 220 20% 25%;
+    --input-foreground: 210 40% 98%;
 
-    --border: 240 6% 88%;
-    --ring: 250 84% 65%;
+    --muted: 222 47% 11%;
+    --muted-foreground: 215 20% 65%;
 
-    /* Premium gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(250 84% 65%), hsl(217 91% 60%));
-    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(160 71% 55%));
-    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(240 5% 98%) 50%, hsl(240 5% 96%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(250 84% 96%) 0%, hsl(217 91% 95%) 100%);
+    --border: 220 20% 20%;
+    --ring: 260 100% 80%;
 
-    /* Enhanced shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
-    --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.08);
-    --shadow-lg: 0 12px 24px -4px rgb(0 0 0 / 0.12);
-    --shadow-xl: 0 20px 32px -8px rgb(0 0 0 / 0.15);
-    --shadow-glow: 0 0 32px hsl(250 84% 65% / 0.25);
-    --shadow-glow-success: 0 0 24px hsl(142 71% 45% / 0.2);
+    /* Mind-blowing gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(260 100% 80%) 0%, hsl(280 100% 70%) 50%, hsl(320 100% 75%) 100%);
+    --gradient-primary-reverse: linear-gradient(225deg, hsl(260 100% 80%) 0%, hsl(280 100% 70%) 50%, hsl(320 100% 75%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(120 100% 50%) 0%, hsl(160 100% 50%) 100%);
+    --gradient-error: linear-gradient(135deg, hsl(0 100% 65%) 0%, hsl(340 100% 65%) 100%);
+    --gradient-warning: linear-gradient(135deg, hsl(45 100% 60%) 0%, hsl(25 100% 60%) 100%);
+    --gradient-surface: linear-gradient(145deg, hsl(223 47% 8%) 0%, hsl(223 47% 12%) 50%, hsl(223 47% 7%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(260 100% 15%) 0%, hsl(280 100% 15%) 25%, hsl(320 100% 15%) 50%, hsl(200 100% 15%) 75%, hsl(120 100% 15%) 100%);
+    --gradient-mesh: radial-gradient(circle at 20% 50%, hsl(260 100% 20%) 0%, transparent 50%), radial-gradient(circle at 80% 20%, hsl(320 100% 20%) 0%, transparent 50%), radial-gradient(circle at 40% 80%, hsl(200 100% 20%) 0%, transparent 50%);
 
-    --radius: 0.875rem;
+    /* Ultra-advanced shadows with neon glow */
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 20px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 12px 40px -4px rgb(0 0 0 / 0.5);
+    --shadow-xl: 0 25px 60px -12px rgb(0 0 0 / 0.6);
+    --shadow-glow: 0 0 40px hsl(260 100% 80% / 0.4), 0 0 80px hsl(260 100% 80% / 0.2);
+    --shadow-glow-primary: 0 0 30px hsl(260 100% 80% / 0.5), 0 0 60px hsl(280 100% 70% / 0.3), 0 0 90px hsl(320 100% 75% / 0.2);
+    --shadow-glow-success: 0 0 30px hsl(120 100% 50% / 0.4), 0 0 60px hsl(120 100% 50% / 0.2);
+    --shadow-glow-error: 0 0 30px hsl(0 100% 65% / 0.4), 0 0 60px hsl(0 100% 65% / 0.2);
+    --shadow-glow-accent: 0 0 30px hsl(320 100% 75% / 0.4), 0 0 60px hsl(320 100% 75% / 0.2);
+    --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.3);
+
+    --radius: 1rem;
 
     /* Sidebar colors */
     --sidebar-background: 0 0% 98%;
@@ -145,37 +166,150 @@
 }
 
 @layer components {
-  /* Glassmorphism effects */
+  /* Ultra-advanced glassmorphism with depth */
   .glass {
-    @apply backdrop-blur-sm bg-surface/80 border border-card-border/50;
+    @apply backdrop-blur-xl bg-surface/30 border border-border/30;
+    box-shadow: var(--shadow-inner), var(--shadow-lg);
   }
   
   .glass-strong {
-    @apply backdrop-blur-md bg-surface/90 border border-card-border;
+    @apply backdrop-blur-2xl bg-surface/50 border border-border/50;
+    box-shadow: var(--shadow-inner), var(--shadow-xl);
   }
 
-  /* Enhanced buttons */
+  .glass-ultimate {
+    @apply backdrop-blur-3xl bg-surface/60 border border-border/60;
+    box-shadow: var(--shadow-inner), var(--shadow-glow-primary);
+  }
+
+  /* Next-level button effects */
   .btn-glow {
-    @apply transition-all duration-300 hover:shadow-glow;
+    @apply transition-all duration-500 ease-out;
+    background: var(--gradient-primary);
+    border: 1px solid hsl(var(--primary));
+    box-shadow: var(--shadow-glow-primary);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Status indicators */
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-glow:hover::before {
+    left: 100%;
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-glow-primary), 0 10px 30px -10px hsl(var(--primary) / 0.5);
+  }
+
+  /* Advanced status indicators with animations */
   .status-healthy {
     @apply bg-success text-success-foreground;
+    box-shadow: var(--shadow-glow-success);
+    animation: pulse-success 2s infinite;
   }
   
   .status-unhealthy {
     @apply bg-error text-error-foreground;
+    box-shadow: var(--shadow-glow-error);
+    animation: pulse-error 2s infinite;
   }
   
   .status-warning {
     @apply bg-warning text-warning-foreground;
+    animation: pulse-warning 2s infinite;
   }
 
-  /* Grid patterns */
+  /* Ultra-sophisticated patterns */
   .grid-pattern {
-    background-image: radial-gradient(circle at 1px 1px, hsl(var(--muted-foreground)) 1px, transparent 0);
-    background-size: 20px 20px;
-    opacity: 0.1;
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, hsl(var(--accent) / 0.1) 1px, transparent 1px);
+    background-size: 30px 30px, 20px 20px;
+    opacity: 0.6;
+  }
+
+  .mesh-gradient {
+    background: var(--gradient-mesh);
+    opacity: 0.3;
+  }
+
+  /* Floating animation for decorative elements */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  /* Particle effects */
+  .particles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.3) 2px, transparent 2px),
+      radial-gradient(circle at 80% 20%, hsl(var(--accent) / 0.3) 1px, transparent 1px),
+      radial-gradient(circle at 40% 40%, hsl(var(--info) / 0.2) 1px, transparent 1px);
+    background-size: 50px 50px, 30px 30px, 40px 40px;
+    animation: drift 20s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Advanced hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-glow-primary);
+  }
+
+  /* Magnetic hover effect */
+  .magnetic {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  /* Neon text effect */
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow: 
+      0 0 5px hsl(var(--primary) / 0.5),
+      0 0 10px hsl(var(--primary) / 0.4),
+      0 0 15px hsl(var(--primary) / 0.3),
+      0 0 20px hsl(var(--primary) / 0.2);
+  }
+
+  /* Scanning line effect */
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
+    animation: scan 3s ease-in-out infinite;
   }
 }
