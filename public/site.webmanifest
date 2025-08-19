@@ -1,0 +1,16 @@
+{
+  "name": "Model Probe",
+  "short_name": "ModelProbe",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e40af",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64 128x128 256x256",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
