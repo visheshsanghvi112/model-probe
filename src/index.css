@@ -13,39 +13,39 @@
     --surface-muted: 222 47% 11%;
     --surface-elevated: 223 47% 9%;
 
-    /* Cutting-edge neon gradient palette */
-    --primary: 260 100% 80%;
+    /* Professional gradient palette */
+    --primary: 210 40% 65%;
     --primary-foreground: 222 47% 4%;
-    --primary-muted: 260 100% 15%;
-    --primary-glow: 260 100% 85%;
-    --primary-variant: 280 100% 70%;
+    --primary-muted: 210 40% 15%;
+    --primary-glow: 210 40% 70%;
+    --primary-variant: 220 30% 60%;
 
-    /* Advanced multi-hue status system */
-    --success: 120 100% 50%;
+    /* Professional status system */
+    --success: 142 76% 36%;
     --success-foreground: 222 47% 4%;
-    --success-muted: 120 100% 10%;
-    --success-glow: 120 100% 60%;
+    --success-muted: 142 76% 10%;
+    --success-glow: 142 76% 45%;
     
-    --error: 0 100% 65%;
+    --error: 0 84% 60%;
     --error-foreground: 222 47% 4%;
-    --error-muted: 0 100% 10%;
-    --error-glow: 0 100% 70%;
+    --error-muted: 0 84% 10%;
+    --error-glow: 0 84% 65%;
     
-    --warning: 45 100% 60%;
+    --warning: 38 92% 50%;
     --warning-foreground: 222 47% 4%;
-    --warning-muted: 45 100% 10%;
-    --warning-glow: 45 100% 65%;
+    --warning-muted: 38 92% 10%;
+    --warning-glow: 38 92% 55%;
     
-    --info: 200 100% 70%;
+    --info: 201 96% 32%;
     --info-foreground: 222 47% 4%;
-    --info-muted: 200 100% 10%;
-    --info-glow: 200 100% 75%;
+    --info-muted: 201 96% 10%;
+    --info-glow: 201 96% 40%;
 
-    /* Sophisticated accent system */
-    --accent: 320 100% 75%;
+    /* Professional accent system */
+    --accent: 240 5% 65%;
     --accent-foreground: 222 47% 4%;
-    --accent-muted: 320 100% 15%;
-    --accent-glow: 320 100% 80%;
+    --accent-muted: 240 5% 15%;
+    --accent-glow: 240 5% 70%;
 
     /* Premium UI elements */
     --card: 223 47% 8%;
@@ -63,26 +63,26 @@
     --border: 220 20% 20%;
     --ring: 260 100% 80%;
 
-    /* Mind-blowing gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(260 100% 80%) 0%, hsl(280 100% 70%) 50%, hsl(320 100% 75%) 100%);
-    --gradient-primary-reverse: linear-gradient(225deg, hsl(260 100% 80%) 0%, hsl(280 100% 70%) 50%, hsl(320 100% 75%) 100%);
-    --gradient-success: linear-gradient(135deg, hsl(120 100% 50%) 0%, hsl(160 100% 50%) 100%);
-    --gradient-error: linear-gradient(135deg, hsl(0 100% 65%) 0%, hsl(340 100% 65%) 100%);
-    --gradient-warning: linear-gradient(135deg, hsl(45 100% 60%) 0%, hsl(25 100% 60%) 100%);
+    /* Professional gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 40% 65%) 0%, hsl(220 30% 60%) 50%, hsl(240 5% 65%) 100%);
+    --gradient-primary-reverse: linear-gradient(225deg, hsl(210 40% 65%) 0%, hsl(220 30% 60%) 50%, hsl(240 5% 65%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(158 64% 52%) 100%);
+    --gradient-error: linear-gradient(135deg, hsl(0 84% 60%) 0%, hsl(354 70% 54%) 100%);
+    --gradient-warning: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(32 95% 44%) 100%);
     --gradient-surface: linear-gradient(145deg, hsl(223 47% 8%) 0%, hsl(223 47% 12%) 50%, hsl(223 47% 7%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(260 100% 15%) 0%, hsl(280 100% 15%) 25%, hsl(320 100% 15%) 50%, hsl(200 100% 15%) 75%, hsl(120 100% 15%) 100%);
-    --gradient-mesh: radial-gradient(circle at 20% 50%, hsl(260 100% 20%) 0%, transparent 50%), radial-gradient(circle at 80% 20%, hsl(320 100% 20%) 0%, transparent 50%), radial-gradient(circle at 40% 80%, hsl(200 100% 20%) 0%, transparent 50%);
+    --gradient-hero: linear-gradient(135deg, hsl(223 47% 8%) 0%, hsl(210 40% 15%) 25%, hsl(240 5% 15%) 50%, hsl(201 96% 15%) 75%, hsl(142 76% 15%) 100%);
+    --gradient-mesh: radial-gradient(circle at 20% 50%, hsl(210 40% 20%) 0%, transparent 50%), radial-gradient(circle at 80% 20%, hsl(240 5% 20%) 0%, transparent 50%), radial-gradient(circle at 40% 80%, hsl(201 96% 20%) 0%, transparent 50%);
 
-    /* Ultra-advanced shadows with neon glow */
+    /* Professional shadows with subtle glow */
     --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3);
     --shadow-md: 0 4px 20px -2px rgb(0 0 0 / 0.4);
     --shadow-lg: 0 12px 40px -4px rgb(0 0 0 / 0.5);
     --shadow-xl: 0 25px 60px -12px rgb(0 0 0 / 0.6);
-    --shadow-glow: 0 0 40px hsl(260 100% 80% / 0.4), 0 0 80px hsl(260 100% 80% / 0.2);
-    --shadow-glow-primary: 0 0 30px hsl(260 100% 80% / 0.5), 0 0 60px hsl(280 100% 70% / 0.3), 0 0 90px hsl(320 100% 75% / 0.2);
-    --shadow-glow-success: 0 0 30px hsl(120 100% 50% / 0.4), 0 0 60px hsl(120 100% 50% / 0.2);
-    --shadow-glow-error: 0 0 30px hsl(0 100% 65% / 0.4), 0 0 60px hsl(0 100% 65% / 0.2);
-    --shadow-glow-accent: 0 0 30px hsl(320 100% 75% / 0.4), 0 0 60px hsl(320 100% 75% / 0.2);
+    --shadow-glow: 0 0 20px hsl(210 40% 65% / 0.2), 0 0 40px hsl(210 40% 65% / 0.1);
+    --shadow-glow-primary: 0 0 15px hsl(210 40% 65% / 0.3), 0 0 30px hsl(220 30% 60% / 0.2), 0 0 45px hsl(240 5% 65% / 0.1);
+    --shadow-glow-success: 0 0 15px hsl(142 76% 36% / 0.3), 0 0 30px hsl(142 76% 36% / 0.15);
+    --shadow-glow-error: 0 0 15px hsl(0 84% 60% / 0.3), 0 0 30px hsl(0 84% 60% / 0.15);
+    --shadow-glow-accent: 0 0 15px hsl(240 5% 65% / 0.3), 0 0 30px hsl(240 5% 65% / 0.15);
     --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.3);
 
     --radius: 1rem;
