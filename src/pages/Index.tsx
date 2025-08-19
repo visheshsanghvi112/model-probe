@@ -11,7 +11,6 @@ import { ApiChecker } from "@/services/apiChecker";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Activity, Zap } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
   const [selectedProvider, setSelectedProvider] = useState<Provider | null>(null);
@@ -73,23 +72,8 @@ const Index = () => {
       };
       
       setCurrentResult(finalResult);
-      setHistory(prev => [finalResult, ...prev.slice(0, 4)]); // Keep last 5 including current
-      
-      // Persist to Supabase with actual API key (WARNING: Security risk!)
-      const { error: insertError } = await supabase.from('api_checks').insert({
-        provider_name: selectedProvider.name,
-        model_name: selectedModel,
-        status: finalResult.status,
-        latency: finalResult.latency,
-        error_message: finalResult.errorMessage,
-        api_key_value: apiKey
-      });
-
-      if (insertError) {
-        console.error('Failed to save API check to database:', insertError);
-      } else {
-        console.log('API check saved successfully to database');
-      }
+  setHistory(prev => [finalResult, ...prev.slice(0, 4)]); // Keep last 5 including current (local only)
+  // Privacy: Do not persist API keys or checks to any backend.
       
       if (finalResult.status === 'healthy') {
         toast({
@@ -124,7 +108,7 @@ const Index = () => {
       
       <main className="relative container mx-auto px-4 py-8 lg:py-16 max-w-6xl z-10">
         {/* Hero Section with next-level design */}
-        <section className="text-center mb-12 lg:mb-16 animate-fade-in-up">
+        <section id="features" className="text-center mb-12 lg:mb-16 animate-fade-in-up">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground">
               API Health Monitor
@@ -140,7 +124,7 @@ const Index = () => {
         </section>
 
         {/* Professional form design */}
-        <div className="glass-strong rounded-xl p-6 md:p-8 mb-10 lg:mb-12 hover-lift">
+  <div id="providers" className="glass-strong rounded-xl p-6 md:p-8 mb-10 lg:mb-12 hover-lift">
           
           <div className="space-y-6">
             <div className="text-center mb-6">
@@ -207,7 +191,7 @@ const Index = () => {
 
         {/* Current Result with epic styling */}
         {currentResult && (
-          <div className="mb-12 lg:mb-16 animate-status-appear">
+          <div id="status" className="mb-12 lg:mb-16 animate-status-appear">
             <div className="text-center mb-8">
               <h2 className="text-4xl font-bold text-foreground mb-3 flex items-center justify-center gap-3">
                 <Activity className="h-10 w-10 text-primary animate-pulse-glow" />
@@ -221,7 +205,7 @@ const Index = () => {
 
         {/* History with advanced presentation */}
         {history.length > 0 && (
-          <div className="animate-fade-in">
+          <div id="history" className="animate-fade-in">
             <div className="text-center mb-10">
               <h2 className="text-4xl font-bold text-foreground mb-3 flex items-center justify-center gap-3">
                 <Activity className="h-10 w-10 text-accent animate-pulse-glow" />

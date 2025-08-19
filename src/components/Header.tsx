@@ -1,40 +1,29 @@
-import { Activity, Shield, Zap } from "lucide-react";
+import { Activity } from "lucide-react";
 
 export const Header = () => {
   return (
-    <header className="relative glass-strong border-b border-card-border/50 backdrop-blur-xl">
-      <div className="container mx-auto px-4 py-6 lg:py-8 max-w-5xl">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className="relative p-3 rounded-2xl bg-gradient-primary shadow-glow group">
-              <Activity className="h-7 w-7 text-primary-foreground group-hover:scale-110 transition-transform duration-200" />
-              <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl opacity-50"></div>
+    <header className="sticky top-0 z-50 bg-surface-muted/90 backdrop-blur border-b border-card-border shadow-soft">
+      <div className="container mx-auto px-4 py-4 lg:py-5 max-w-6xl">
+        <div className="flex items-center justify-between gap-4">
+          <a href="/" className="flex items-center gap-3 group">
+            <div className="relative p-2.5 rounded-xl bg-gradient-primary shadow-glow">
+              <Activity className="h-5 w-5 text-primary-foreground transition-transform duration-200 group-hover:scale-110" />
             </div>
             <div>
-              <h1 className="text-2xl lg:text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                Model Probe
-              </h1>
-              <p className="text-sm lg:text-base text-muted-foreground">
-                Universal LLM API Health Checker
-              </p>
+              <span className="block text-xl lg:text-2xl font-bold text-foreground">Model Probe</span>
+              <span className="block text-xs lg:text-sm text-muted-foreground">LLM API Health Checker</span>
             </div>
-          </div>
-          
-          <div className="flex flex-wrap items-center gap-4 lg:gap-6 text-sm">
-            <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-success-muted border border-success/20">
-              <Shield className="h-4 w-4 text-success" />
-              <span className="font-medium text-success">Enterprise Ready</span>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-info-muted border border-info/20">
-              <Zap className="h-4 w-4 text-info" />
-              <span className="font-medium text-info">Real-time</span>
-            </div>
+          </a>
+
+          <div className="hidden sm:flex items-center gap-6">
+            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-foreground/80">
+              <a href="#providers" className="hover:text-foreground transition-colors">Providers</a>
+              <a href="#history" className="hover:text-foreground transition-colors">History</a>
+              <a href="/about" className="hover:text-foreground transition-colors">About</a>
+            </nav>
           </div>
         </div>
       </div>
-      
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-hero opacity-50 pointer-events-none"></div>
     </header>
   );
 };
