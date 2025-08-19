@@ -133,19 +133,18 @@ const Index = () => {
         {/* Hero Section with next-level design */}
         <section className="text-center mb-16 lg:mb-24 animate-fade-in-up">
           <div className="relative">
-            {/* Main title with shimmer effect */}
-            <h1 className="text-5xl md:text-6xl lg:text-8xl font-black mb-8 leading-tight relative">
-              <span className="bg-text-shimmer bg-200% animate-text-shimmer bg-clip-text text-transparent neon-text">
+            {/* Main title with subtle shimmer */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <span className="bg-text-shimmer bg-200% animate-text-shimmer bg-clip-text text-transparent">
                 API Health Monitor
               </span>
-              <span className="block text-2xl md:text-3xl lg:text-4xl font-light text-muted-foreground mt-4">
-                Next-Generation Testing Platform
+              <span className="block text-xl md:text-2xl lg:text-3xl font-normal text-muted-foreground mt-3">
+                Professional Testing Platform
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-foreground/80 max-w-4xl mx-auto leading-relaxed mb-12">
-              Experience the future of API monitoring with cutting-edge real-time testing, 
-              ultra-fast latency detection, and enterprise-grade reliability metrics.
+            <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed mb-8">
+              Professional API monitoring with real-time testing, latency detection, and reliability metrics.
             </p>
             
             {/* Advanced decorative elements */}
@@ -158,19 +157,19 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Ultimate form design */}
-        <div className="glass-ultimate rounded-3xl shadow-ultimate p-8 md:p-10 lg:p-12 mb-12 lg:mb-16 animate-scale-in hover-lift relative overflow-hidden">
-          {/* Animated border glow */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-primary opacity-20 blur-sm animate-glow-rotate" />
+        {/* Professional form design */}
+        <div className="glass-strong rounded-2xl shadow-lg p-6 md:p-8 mb-10 lg:mb-12 animate-scale-in hover-lift relative">
+          {/* Subtle border accent */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-primary opacity-5 blur-sm animate-glow-rotate" />
           
           <div className="relative z-10 space-y-8">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-foreground mb-2">Configure Your Test</h2>
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-foreground mb-2">Configure Your Test</h2>
               <p className="text-muted-foreground">Select your provider, model, and enter your API key</p>
             </div>
             
-            {/* Provider and Model Selection with staggered animations */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Provider and Model Selection */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="space-y-3 animate-slide-in-left">
                 <label className="text-base font-semibold text-foreground flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
@@ -206,26 +205,23 @@ const Index = () => {
               />
             </div>
 
-            {/* Ultra-advanced action button */}
+            {/* Professional action button */}
             <Button
               onClick={handleCheck}
               disabled={isChecking || !selectedProvider || !selectedModel || !apiKey.trim()}
-              className="w-full h-16 text-xl font-bold btn-glow relative overflow-hidden group transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full h-12 text-lg font-semibold btn-glow relative overflow-hidden group transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <div className="relative z-10 flex items-center justify-center gap-4">
+              <div className="relative z-10 flex items-center justify-center gap-3">
                 {isChecking ? (
                   <>
-                    <div className="relative">
-                      <div className="animate-spin rounded-full h-8 w-8 border-3 border-primary-foreground/30 border-t-primary-foreground"></div>
-                      <div className="absolute inset-0 animate-ping rounded-full h-8 w-8 border border-primary-foreground/50"></div>
-                    </div>
-                    <span className="tracking-wide">Analyzing API Connection...</span>
+                    <div className="animate-spin rounded-full h-5 w-5 border-2 border-primary-foreground/30 border-t-primary-foreground"></div>
+                    <span>Checking API Connection...</span>
                   </>
                 ) : (
                   <>
-                    <Zap className="h-8 w-8 group-hover:scale-110 transition-transform duration-300" />
-                    <span className="tracking-wide">Launch Health Check</span>
-                    <Activity className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+                    <Zap className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                    <span>Run Health Check</span>
+                    <Activity className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300" />
                   </>
                 )}
               </div>
