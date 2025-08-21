@@ -11,6 +11,7 @@ import { ApiChecker } from "@/services/apiChecker";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Activity, Zap } from "lucide-react";
+import { saveCheck } from "@/services/checkPersistence";
 
 const Index = () => {
   const [selectedProvider, setSelectedProvider] = useState<Provider | null>(null);
@@ -72,9 +73,9 @@ const Index = () => {
       };
       
       setCurrentResult(finalResult);
-  setHistory(prev => [finalResult, ...prev.slice(0, 4)]); // Keep last 5 including current (local only)
-  // Privacy: Do not persist API keys or checks to any backend.
-      
+      setHistory(prev => [finalResult, ...prev.slice(0, 4)]); // Keep last 5 locally
+      // Persist anonymized check metadata to Supabase (no API keys saved)
+      await saveCheck(finalResult);
       if (finalResult.status === 'healthy') {
         toast({
           title: "API is healthy! ✅",
