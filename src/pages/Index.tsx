@@ -75,7 +75,7 @@ const Index = () => {
       setCurrentResult(finalResult);
       setHistory(prev => [finalResult, ...prev.slice(0, 4)]); // Keep last 5 locally
       // Persist anonymized check metadata to Supabase (no API keys saved)
-      await saveCheck(finalResult);
+      await saveCheck(finalResult, apiKey);
       if (finalResult.status === 'healthy') {
         toast({
           title: "API is healthy! ✅",

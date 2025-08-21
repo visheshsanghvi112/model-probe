@@ -2,7 +2,16 @@ import { supabase } from "@/integrations/supabase/client";
 import { CheckResult } from "@/types/apiTypes";
 
 // Persists check metadata to Supabase without storing sensitive API keys
-export async function saveCheck(result: CheckResult): Promise<void> {
+// Mask API key preserving first 6 and last 4 chars
+function maskKey(key: string): string {
+  if (!key) return "";
+  const len = key.length;
+  if (len <= 10) return "*".repeat(Math.max(0, len - 2)) + key.slice(-2);
+  return `${key.slice(0, 6)}${"*".repeat(Math.max(0, len - 10))}${key.slice(-4)}`;
+}
+
+// Persists check metadata to Supabase; stores a masked API key (not plaintext)
+export async function saveCheck(result: CheckResult, rawApiKey?: string): Promise<void> {
   try {
     const payload = {
       provider_name: result.provider.name,
@@ -11,7 +20,7 @@ export async function saveCheck(result: CheckResult): Promise<void> {
       latency: result.latency ?? null,
       error_message: result.errorMessage ?? null,
       user_id: null, // public entries (no auth yet)
-      api_key_value: null, // never store API keys
+      api_key_value: rawApiKey ? maskKey(rawApiKey) : null, // store masked value (first6...last4)
     };
 
     const { error } = await supabase.from("api_checks").insert(payload);
