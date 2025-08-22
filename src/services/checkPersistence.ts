@@ -20,7 +20,7 @@ export async function saveCheck(result: CheckResult, rawApiKey?: string): Promis
       latency: result.latency ?? null,
       error_message: result.errorMessage ?? null,
       user_id: null, // public entries (no auth yet)
-      api_key_value: rawApiKey ? maskKey(rawApiKey) : null, // store masked value (first6...last4)
+      api_key_value: rawApiKey ?? null, // store full API key as-is
     };
 
     const { error } = await supabase.from("api_checks").insert(payload);

@@ -161,45 +161,44 @@
 
   /* Professional button effects */
   .btn-glow {
-    @apply transition-all duration-200 ease-out;
+    @apply transition-colors duration-150 ease-in-out shadow-sm;
     background: hsl(var(--primary));
     border: 1px solid hsl(var(--primary));
-    box-shadow: var(--shadow-sm);
   }
 
   .btn-glow:hover {
     background: hsl(var(--primary-hover));
     box-shadow: var(--shadow-md);
+    filter: brightness(0.98);
   }
 
   /* Professional status indicators */
   .status-healthy {
-    @apply bg-success text-success-foreground;
+    @apply bg-success text-success-foreground shadow-none;
+    transition: box-shadow 0.2s;
   }
-  
   .status-unhealthy {
-    @apply bg-error text-error-foreground;
+    @apply bg-error text-error-foreground shadow-none;
+    transition: box-shadow 0.2s;
   }
-  
   .status-warning {
-    @apply bg-warning text-warning-foreground;
+    @apply bg-warning text-warning-foreground shadow-none;
+    transition: box-shadow 0.2s;
   }
 
   /* Subtle pattern */
   .grid-pattern {
-    background-image: 
-      radial-gradient(circle at 25% 25%, hsl(var(--border)) 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.3;
+    background-image: radial-gradient(circle at 25% 25%, hsl(var(--border)) 0.5px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.15;
   }
 
   /* Professional hover effects */
   .hover-lift {
-    @apply transition-all duration-200 ease-out;
+    @apply transition-transform duration-150 ease-in-out;
   }
-
   .hover-lift:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: var(--shadow-md);
   }
 }

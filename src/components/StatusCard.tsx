@@ -1,5 +1,6 @@
 import { CheckResult } from "@/types/apiTypes";
 import { CheckCircle, XCircle, AlertTriangle, AlertCircle, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface StatusCardProps {
   result: CheckResult;
@@ -8,19 +9,26 @@ interface StatusCardProps {
 const getStatusIcon = (status: CheckResult['status']) => {
   switch (status) {
     case 'healthy':
-      return <CheckCircle className="h-5 w-5 text-success" />;
+      return <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />;
     case 'invalid-key':
-      return <XCircle className="h-5 w-5 text-error" />;
+      return <XCircle className="h-6 w-6 text-red-600 dark:text-red-400" />;
     case 'model-not-found':
-      return <AlertTriangle className="h-5 w-5 text-warning" />;
+      return <AlertTriangle className="h-6 w-6 text-orange-600 dark:text-orange-400" />;
     case 'provider-error':
-      return <AlertCircle className="h-5 w-5 text-error" />;
+      return <AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400" />;
     case 'cors-blocked':
-      return <AlertTriangle className="h-5 w-5 text-warning" />;
+      return <AlertTriangle className="h-6 w-6 text-orange-600 dark:text-orange-400" />;
     case 'checking':
-      return <Clock className="h-5 w-5 text-info animate-spin" />;
+      return (
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+        >
+          <Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+        </motion.div>
+      );
     default:
-      return <AlertCircle className="h-5 w-5 text-muted-foreground" />;
+      return <AlertCircle className="h-6 w-6 text-gray-600 dark:text-gray-400" />;
   }
 };
 
@@ -46,17 +54,17 @@ const getStatusText = (status: CheckResult['status']) => {
 const getStatusColor = (status: CheckResult['status']) => {
   switch (status) {
     case 'healthy':
-      return 'border-success/20 bg-success-muted';
+      return 'border-green-200 bg-green-50 dark:border-green-700/50 dark:bg-green-900/20';
     case 'invalid-key':
     case 'provider-error':
-      return 'border-error/20 bg-error-muted';
+      return 'border-red-200 bg-red-50 dark:border-red-700/50 dark:bg-red-900/20';
     case 'model-not-found':
     case 'cors-blocked':
-      return 'border-warning/20 bg-warning-muted';
+      return 'border-orange-200 bg-orange-50 dark:border-orange-700/50 dark:bg-orange-900/20';
     case 'checking':
-      return 'border-info/20 bg-info-muted animate-pulse-glow';
+      return 'border-blue-200 bg-blue-50 dark:border-blue-700/50 dark:bg-blue-900/20';
     default:
-      return 'border-border bg-surface';
+      return 'border-gray-200 bg-gray-50 dark:border-gray-700/50 dark:bg-gray-900/20';
   }
 };
 
@@ -73,86 +81,112 @@ export const StatusCard = ({ result }: StatusCardProps) => {
   };
 
   return (
-    <div className={`glass-strong rounded-xl p-6 lg:p-8 animate-status-appear hover-lift ${getStatusColor(result.status)}`}>
-      <div>
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="relative"
+    >
+      <div className="backdrop-blur-xl bg-white/80 dark:bg-slate-900/80 rounded-3xl border border-white/20 dark:border-slate-700/50 shadow-2xl shadow-slate-900/10 dark:shadow-slate-950/50 p-8 lg:p-10">
         {/* Header section */}
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-          <div className="flex items-center gap-4">
-            <div className="flex-shrink-0 text-3xl lg:text-4xl">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-8">
+          <div className="flex items-center gap-6">
+            <motion.div 
+              className="flex-shrink-0 text-4xl lg:text-5xl"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+            >
               {result.provider.icon}
-            </div>
+            </motion.div>
             <div className="min-w-0">
-              <h3 className="text-xl lg:text-2xl font-semibold text-card-foreground truncate mb-1">
+              <h3 className="text-2xl lg:text-3xl font-bold text-slate-800 dark:text-slate-200 truncate mb-2">
                 {result.provider.name}
               </h3>
-              <p className="text-sm lg:text-base text-muted-foreground truncate font-mono bg-muted px-2 py-1 rounded">
+              <p className="text-base lg:text-lg text-slate-600 dark:text-slate-400 truncate font-mono bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-xl">
                 {result.model}
               </p>
             </div>
           </div>
-          <div className="flex-shrink-0 self-start">
+          <motion.div 
+            className="flex-shrink-0 self-start p-3 bg-white/60 dark:bg-slate-700/60 rounded-2xl"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+          >
             {getStatusIcon(result.status)}
-          </div>
+          </motion.div>
         </div>
         
         {/* Metrics grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm lg:text-base">
-          <div className="glass p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-200">
-            <div className="flex items-center gap-3 mb-2">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-base lg:text-lg">
+          <motion.div 
+            className="bg-white/50 dark:bg-slate-800/50 p-6 rounded-2xl border border-white/30 dark:border-slate-700/30 hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all duration-200"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
+          >
+            <div className="flex items-center gap-3 mb-3">
               {getStatusIcon(result.status)}
               <div className="w-full">
-                <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Status</p>
-                <p className="font-semibold text-card-foreground">{getStatusText(result.status)}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold">Status</p>
+                <p className="font-bold text-slate-800 dark:text-slate-200">{getStatusText(result.status)}</p>
               </div>
             </div>
-          </div>
+          </motion.div>
           
           {result.latency && (
-            <div className="glass p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-200">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-3 h-3 rounded-full bg-primary"></div>
+            <motion.div 
+              className="bg-white/50 dark:bg-slate-800/50 p-6 rounded-2xl border border-white/30 dark:border-slate-700/30 hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all duration-200"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-4 h-4 rounded-full bg-blue-500 dark:bg-blue-400"></div>
                 <div className="w-full">
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Response Time</p>
-                  <p className="font-semibold text-card-foreground">
+                  <p className="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold">Response Time</p>
+                  <p className="font-bold text-slate-800 dark:text-slate-200">
                     {result.latency}ms
-                    <span className="text-xs text-muted-foreground ml-1">
+                    <span className="text-sm text-slate-500 dark:text-slate-400 ml-2">
                       {result.latency < 500 ? 'Fast' : result.latency < 1000 ? 'Good' : 'Slow'}
                     </span>
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           )}
           
-          <div className="glass p-4 rounded-lg border border-border hover:border-info/50 transition-all duration-200">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-3 h-3 rounded-full bg-info"></div>
+          <motion.div 
+            className="bg-white/50 dark:bg-slate-800/50 p-6 rounded-2xl border border-white/30 dark:border-slate-700/30 hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all duration-200"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-4 h-4 rounded-full bg-indigo-500 dark:bg-indigo-400"></div>
               <div className="w-full">
-                <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Timestamp</p>
-                <p className="font-semibold text-card-foreground text-xs lg:text-sm">
-                  {formatTimestamp(result.timestamp)}
-                </p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold">Checked At</p>
+                <p className="font-bold text-slate-800 dark:text-slate-200 text-sm">{formatTimestamp(result.timestamp)}</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-        
-        {/* Error section with enhanced styling */}
+
+        {/* Error message if present */}
         {result.errorMessage && (
-          <div className="mt-8 glass-strong p-6 rounded-2xl border-2 border-error/30 bg-error-muted/20 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-error opacity-5" />
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-3">
-                <XCircle className="h-6 w-6 text-error animate-pulse-error" />
-                <p className="text-base font-bold text-error">Diagnostic Information</p>
-              </div>
-              <p className="text-sm text-error/90 font-mono bg-error/10 p-3 rounded-lg border border-error/20">
-                {result.errorMessage}
-              </p>
-            </div>
-          </div>
+          <motion.div 
+            className="mt-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 rounded-2xl"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            transition={{ duration: 0.3, delay: 0.7 }}
+          >
+            <p className="text-sm text-red-700 dark:text-red-400 font-medium">
+              <strong>Error:</strong> {result.errorMessage}
+            </p>
+          </motion.div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };

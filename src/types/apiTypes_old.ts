@@ -1,7 +1,10 @@
+import React from 'react';
+import { OpenAILogo, AnthropicLogo, GeminiLogo, DeepSeekLogo } from '@/components/ProviderLogos';
+
 export interface Provider {
   id: string;
   name: string;
-  icon: string; // Keep as string for now, we'll render the component dynamically
+  icon: React.ReactElement;
   models: string[];
   endpoint: string;
   headers?: Record<string, string>;
@@ -27,28 +30,33 @@ export const PROVIDERS: Record<string, Provider> = {
   openai: {
     id: 'openai',
     name: 'OpenAI',
-    icon: 'openai',
-    models: ['gpt-4o', 'gpt-4o-mini', 'gpt-4', 'gpt-3.5-turbo'],
+    icon: <OpenAILogo />,
+    models: ['gpt-4.1', 'gpt-4o', 'gpt-4o-mini', 'gpt-3.5-turbo'],
     endpoint: 'https://api.openai.com/v1/chat/completions'
   },
   anthropic: {
     id: 'anthropic',
     name: 'Anthropic',
-    icon: 'anthropic',
+    icon: <AnthropicLogo />,
     models: ['claude-3-5-sonnet-20241022', 'claude-3-opus-20240229', 'claude-3-haiku-20240307'],
     endpoint: 'https://api.anthropic.com/v1/messages'
   },
   gemini: {
     id: 'gemini',
-    name: 'Google Gemini',
-    icon: 'gemini',
-    models: ['gemini-2.0-flash-exp', 'gemini-1.5-pro', 'gemini-1.5-flash'],
+    name: 'Gemini',
+    icon: <GeminiLogo />,
+    models: ['gemini-2.5-flash', 'gemini-1.5-pro', 'gemini-1.5-flash'],
     endpoint: 'https://generativelanguage.googleapis.com/v1beta/models/'
   },
   deepseek: {
     id: 'deepseek',
     name: 'DeepSeek',
-    icon: 'deepseek',
+    icon: <DeepSeekLogo />,
+    models: ['deepseek-chat', 'deepseek-coder'],
+    endpoint: 'https://api.deepseek.com/v1/chat/completions'
+  }
+};,
+    icon: '🔍',
     models: ['deepseek-chat', 'deepseek-coder'],
     endpoint: 'https://api.deepseek.com/v1/chat/completions'
   }
